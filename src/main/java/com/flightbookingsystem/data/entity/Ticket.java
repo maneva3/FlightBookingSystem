@@ -20,12 +20,12 @@ import java.math.BigDecimal;
 @Table(name = "ticket")
 public class Ticket {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "booking_reference")
     private String bookingReference;
 
     @ManyToOne(targetEntity = Flight.class)
     @JoinColumn(name = "ticket_id")
-    @NotNull
+    @NotNull(message = "Flight must be set!")
     private Flight flight;
 
     @Column(name = "seat")

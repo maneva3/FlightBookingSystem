@@ -2,6 +2,7 @@ package com.flightbookingsystem.data.entity;
 
 import com.flightbookingsystem.data.enums.CountryCode;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -18,10 +19,11 @@ import java.util.Set;
 public class Country {
     @Id
     @Column(name = "country_code")
+    @Enumerated(EnumType.STRING)
     private CountryCode countryCode;
 
     @Column(name = "name")
-    @NotNull(message = "Country name must be set!")
+    @NotBlank(message = "Country name cannot be blank!")
     private String name;
 
     @Column(name = "cities")

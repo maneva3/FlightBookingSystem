@@ -1,6 +1,7 @@
 package com.flightbookingsystem.data.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -20,7 +21,7 @@ public class Airport {
     private String code;
 
     @Column(name = "name")
-    @NotNull(message = "Airport name must be set!")
+    @NotBlank(message = "Airport name cannot be blank!")
     private String name;
 
     @ManyToOne(targetEntity = City.class)

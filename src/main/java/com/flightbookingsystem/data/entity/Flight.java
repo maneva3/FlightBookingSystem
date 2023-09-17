@@ -2,6 +2,7 @@ package com.flightbookingsystem.data.entity;
 
 import com.flightbookingsystem.data.enums.FlightStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -20,10 +21,11 @@ import java.util.Set;
 public class Flight {
     @Id
     @Column(name = "id")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "flight_number")
-    @NotNull(message = "Flight number must be set!")
+    @NotBlank(message = "Flight number cannot be blank!")
     private String flightNumber;
 
     @ManyToOne(targetEntity = Airport.class)
