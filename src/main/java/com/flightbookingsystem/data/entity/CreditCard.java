@@ -6,9 +6,15 @@ import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.*;
 
 import java.time.LocalDate;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "credit_card")
 public class CreditCard {
@@ -34,4 +40,20 @@ public class CreditCard {
     @Column(name = "card_type")
     @Enumerated(EnumType.STRING)
     private CreditCardType cardType;
+
+    public CreditCard(String cardNumber, String cardHolderName, LocalDate expiryDate, String cvv) {
+        this.cardNumber = cardNumber;
+        this.cardHolderName = cardHolderName;
+        this.expiryDate = expiryDate;
+        this.cvv = cvv;
+        this.cardType = determineCardType(cardNumber);
+    }
+    private CreditCardType determineCardType(String cardNumber) {
+        if (cardNumber.startsWith("3")) {
+            return CreditCardType.AMERICAN_EXPRESS;
+        } else if (cardNumber.startsWith("4")) {
+            return CreditCardType.VISA;
+        } else
+            return CreditCardType.MASTERCARD;
+    }
 }
