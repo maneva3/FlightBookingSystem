@@ -1,6 +1,6 @@
 package com.flightbookingsystem.data.entity;
 
-import com.flightbookingsystem.data.enums.CountryName;
+import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.data.enums.Gender;
 import jakarta.persistence.*;
 
@@ -22,7 +22,7 @@ import java.time.LocalDate;
 public class Identification {
     @Id
     @Column(name = "identification_number")
-    @Pattern(regexp = "[0-9]{13}", message = "Identification number must be 13 digits")
+    @Pattern(regexp = "[a-zA-Z0-9]{13}", message = "Identification number must be 13 digits")
     private String identificationNumber;
 
     @Column(name = "first_name")
@@ -46,12 +46,15 @@ public class Identification {
     @Column(name = "nalionality")
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Country name is required")
-    private CountryName nationality;
+    private CountryCode nationality;
 
     @Column(name = "gender")
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Gender is required")
     private Gender gender;
+
+    @OneToOne(mappedBy = "identification")
+    private PersonalInfo personalInfo;
 
 }
 

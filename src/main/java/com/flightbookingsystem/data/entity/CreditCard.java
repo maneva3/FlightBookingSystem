@@ -41,6 +41,9 @@ public class CreditCard {
     @Enumerated(EnumType.STRING)
     private CreditCardType cardType;
 
+    @OneToOne(mappedBy = "creditCard")
+    private PersonalInfo personalInfo;
+
     public CreditCard(String cardNumber, String cardHolderName, LocalDate expiryDate, String cvv) {
         this.cardNumber = cardNumber;
         this.cardHolderName = cardHolderName;

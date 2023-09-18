@@ -40,4 +40,7 @@ public class PersonalInfo {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "card_number", referencedColumnName = "card_number")
     private CreditCard creditCard;
+
+    @OneToOne(mappedBy = "personalInfo")
+    private Client client;
 }
