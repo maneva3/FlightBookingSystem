@@ -8,7 +8,7 @@ import java.util.List;
 public interface TicketService {
     List<TicketDTO> getTickets();
 
-    TicketDTO getTicket(@Valid String bookingReference);
+    TicketDTO getTicket(String bookingReference);
 
     Ticket create(@Valid CreateTicketDTO createTicketDTO);
 

@@ -11,7 +11,7 @@ import java.util.List;
 public interface CountryService {
     List<CountryDTO> getCountries();
 
-    CountryDTO getCountry(@Valid CountryCode code);
+    CountryDTO getCountry(CountryCode code);
 
     Country create(@Valid CreateCountryDTO createCountryDTO);
 

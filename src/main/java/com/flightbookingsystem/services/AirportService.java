@@ -9,7 +9,7 @@ import java.util.List;
 public interface AirportService {
     List<AirportDTO> getAirports();
 
-    AirportDTO getAirport(@Valid String code);
+    AirportDTO getAirport(String code);
 
     Airport create(@Valid CreateAirportDTO createAirportDTO);
 

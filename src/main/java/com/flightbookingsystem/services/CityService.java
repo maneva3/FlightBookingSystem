@@ -10,7 +10,7 @@ import java.util.List;
 public interface CityService {
     List<CityDTO> getCities();
 
-    CityDTO getCity(@Valid String code);
+    CityDTO getCity(String code);
 
     City create(@Valid CreateCityDTO createCityDTO);
 
