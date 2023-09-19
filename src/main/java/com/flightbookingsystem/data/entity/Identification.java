@@ -22,7 +22,7 @@ import java.time.LocalDate;
 public class Identification {
     @Id
     @Column(name = "identification_number")
-    @Pattern(regexp = "[a-zA-Z0-9]{13}", message = "Identification number must be 13 digits")
+    @Pattern(regexp = "[a-zA-Z0-9]{13}", message = "Identification number must be 13 symbols")
     private String identificationNumber;
 
     @Column(name = "first_name")
@@ -43,7 +43,7 @@ public class Identification {
     @Future(message = "Expiry date must be in the future")
     private LocalDate expiryDate;
 
-    @Column(name = "nalionality")
+    @Column(name = "nationality")
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Country name is required")
     private CountryCode nationality;
