@@ -1,20 +1,23 @@
 package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.Airport;
+import com.flightbookingsystem.data.repository.AirportRepository;
 import com.flightbookingsystem.exceptions.AirportNotFoundException;
 import com.flightbookingsystem.services.AirportService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
+@Validated
 public class AirportServiceImpl implements AirportService {
-    private final AirportRepository аirportRepository;
+    private final AirportRepository airportRepository;
     private final ModelMapper modelMapper;
 
 

@@ -14,7 +14,7 @@ public interface FlightService {
 
     Flight create(@Valid CreateFlightDTO createFlightDTO);
 
-    Flight updateFlight(Long id, @Valid UpdateFlightDTO updateFlightDTO);
+    Flight updateFlight(@Min(1) Long id, @Valid UpdateFlightDTO updateFlightDTO);
 
     void deleteFlight(Long id);
 }

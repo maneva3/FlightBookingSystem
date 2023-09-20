@@ -17,5 +17,5 @@ public interface CountryService {
 
     Country updateCountry(CountryCode code, @Valid UpdateCountryDTO updateCountryDTO);
 
-    void deleteCountry(String code);
+    void deleteCountry(CountryCode code);
 }

@@ -2,17 +2,20 @@ package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.Country;
 import com.flightbookingsystem.data.enums.CountryCode;
+import com.flightbookingsystem.data.repository.CountryRepository;
 import com.flightbookingsystem.exceptions.CountryNotFoundException;
 import com.flightbookingsystem.services.CountryService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
+@Validated
 public class CountryServiceImpl implements CountryService {
     private final CountryRepository countryRepository;
     private final ModelMapper modelMapper;
@@ -47,7 +50,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public void deleteCountry(String code) {
+    public void deleteCountry(CountryCode code) {
         countryRepository.deleteById(code);
     }
 }
