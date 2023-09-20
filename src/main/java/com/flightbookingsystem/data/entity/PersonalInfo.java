@@ -14,7 +14,6 @@ import lombok.*;
 @Entity
 @Table(name = "personal_info")
 public class PersonalInfo {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
