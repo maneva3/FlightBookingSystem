@@ -1,6 +1,10 @@
 package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.City;
+import com.flightbookingsystem.data.repository.CityRepository;
+import com.flightbookingsystem.dto.CityDTO;
+import com.flightbookingsystem.dto.CreateCityDTO;
+import com.flightbookingsystem.dto.UpdateCityDTO;
 import com.flightbookingsystem.exceptions.CityNotFoundException;
 import com.flightbookingsystem.services.CityService;
 import jakarta.validation.Valid;
@@ -40,7 +44,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public City updateCity(String code, @Valid UpdateCityDTO updateCityDTO) {
+    public City updateCity(@Valid String code, @Valid UpdateCityDTO updateCityDTO) {
         City city = modelMapper.map(updateCityDTO, City.class);
         city.setCode(code);
         return cityRepository.save(city);
