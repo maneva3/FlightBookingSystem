@@ -11,12 +11,14 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
+@Validated
 public class CityServiceImpl implements CityService {
     private final CityRepository cityRepository;
     private final ModelMapper modelMapper;
@@ -44,7 +46,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public City updateCity(@Valid String code, @Valid UpdateCityDTO updateCityDTO) {
+    public City updateCity(String code, @Valid UpdateCityDTO updateCityDTO) {
         City city = modelMapper.map(updateCityDTO, City.class);
         city.setCode(code);
         return cityRepository.save(city);

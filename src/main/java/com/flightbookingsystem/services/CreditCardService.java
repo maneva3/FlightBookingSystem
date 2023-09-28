@@ -7,10 +7,14 @@ import jakarta.validation.Valid;
 
 import java.util.List;
 
-public interface CreditCardService{
+public interface CreditCardService {
     List<CreditCardDTO> getCreditCards();
-    CreditCardDTO getCreditCardById(String id);
-    CreditCardDTO create(@Valid CreateCreditCardDTO createCreditCardDTO);
-    CreditCard updateCreditCard(String id, @Valid CreditCardDTO creditCardDTO);
-    void deleteCreditCard(String id);
+
+    CreditCardDTO getCreditCard(String cardNumber);
+
+    CreditCard create(@Valid CreateCreditCardDTO createCreditCardDTO);
+
+    CreditCard updateCreditCard(String cardNumber, @Valid UpdateCreditCardDTO updateCreditCardDTO);
+
+    void deleteCreditCard(String cardNumber);
 }

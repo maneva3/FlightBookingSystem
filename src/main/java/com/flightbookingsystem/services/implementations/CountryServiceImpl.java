@@ -12,12 +12,14 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
+@Validated
 public class CountryServiceImpl implements CountryService {
     private final CountryRepository countryRepository;
     private final ModelMapper modelMapper;

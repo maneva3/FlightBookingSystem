@@ -5,7 +5,6 @@ import com.flightbookingsystem.data.entity.Ticket;
 import com.flightbookingsystem.dto.CityDTO;
 import com.flightbookingsystem.dto.CreateCityDTO;
 import com.flightbookingsystem.dto.UpdateCityDTO;
-
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 
@@ -18,7 +17,7 @@ public interface CityService {
 
     City create(@Valid CreateCityDTO createCityDTO);
 
-    City updateCity(@Valid String code, @Valid UpdateCityDTO updateCityDTO);
+    City updateCity(String code, @Valid UpdateCityDTO updateCityDTO);
 
     void deleteCity(String code);
 }
