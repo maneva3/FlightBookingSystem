@@ -1,11 +1,6 @@
 package com.flightbookingsystem.data.entity;
 
-<<<<<<< HEAD:src/main/java/com/flightbookingsystem/data/entity/UserIdentification.java
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-=======
 import jakarta.persistence.*;
->>>>>>> main:src/main/java/com/flightbookingsystem/data/entity/User.java
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -19,15 +14,10 @@ import java.util.Set;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-<<<<<<< HEAD:src/main/java/com/flightbookingsystem/data/entity/UserIdentification.java
-@Embeddable
-public class UserIdentification implements java.io.Serializable {
-=======
 @Entity
 @Table(name = "user")
 public class User {
     @Id
->>>>>>> ec270f741e24252b45f1cd1c66ea0e49cb7792d1:src/main/java/com/flightbookingsystem/data/entity/User.java
     @Column(name = "username")
     @Email(regexp = ".+[@].+[\\.].+", message = "Invalid email format!")
     private String username;
