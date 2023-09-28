@@ -1,18 +1,24 @@
 package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.City;
+import com.flightbookingsystem.data.repository.CityRepository;
+import com.flightbookingsystem.dto.CityDTO;
+import com.flightbookingsystem.dto.CreateCityDTO;
+import com.flightbookingsystem.dto.UpdateCityDTO;
 import com.flightbookingsystem.exceptions.CityNotFoundException;
 import com.flightbookingsystem.services.CityService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
+@Validated
 public class CityServiceImpl implements CityService {
     private final CityRepository cityRepository;
     private final ModelMapper modelMapper;

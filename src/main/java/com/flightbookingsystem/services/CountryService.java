@@ -3,6 +3,9 @@ package com.flightbookingsystem.services;
 import com.flightbookingsystem.data.entity.Country;
 import com.flightbookingsystem.data.entity.Country;
 import com.flightbookingsystem.data.enums.CountryCode;
+import com.flightbookingsystem.dto.CountryDTO;
+import com.flightbookingsystem.dto.CreateCountryDTO;
+import com.flightbookingsystem.dto.UpdateCountryDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 
@@ -17,5 +20,5 @@ public interface CountryService {
 
     Country updateCountry(CountryCode code, @Valid UpdateCountryDTO updateCountryDTO);
 
-    void deleteCountry(String code);
+    void deleteCountry(CountryCode code);
 }
