@@ -1,8 +1,5 @@
 package com.flightbookingsystem.dto;
 
-<<<<<<< HEAD
-public class CreateIdentificationDTO {
-=======
 import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.data.enums.Gender;
 import jakarta.persistence.EnumType;
@@ -37,5 +34,4 @@ public class CreateIdentificationDTO {
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Gender is required")
     private Gender gender;
->>>>>>> ec270f741e24252b45f1cd1c66ea0e49cb7792d1
 }

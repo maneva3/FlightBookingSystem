@@ -1,12 +1,9 @@
 package com.flightbookingsystem.dto;
 
-<<<<<<< HEAD
-public class CreateFlightDTO {
-=======
-import com.flightbookingsystem.data.entity.Airport;
-import com.flightbookingsystem.data.enums.FlightStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import com.flightbookingsystem.data.entity.Airport;
+import com.flightbookingsystem.data.enums.FlightStatus;
 
 import java.time.LocalDate;
 
@@ -30,5 +27,4 @@ public class CreateFlightDTO {
 
     @NotNull(message = "Flight status must be set!")
     private FlightStatus flightStatus = FlightStatus.SCHEDULED;
->>>>>>> ec270f741e24252b45f1cd1c66ea0e49cb7792d1
 }

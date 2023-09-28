@@ -4,10 +4,7 @@ import com.flightbookingsystem.data.entity.CreditCard;
 import com.flightbookingsystem.data.repository.CreditCardRepository;
 import com.flightbookingsystem.dto.CreateCreditCardDTO;
 import com.flightbookingsystem.dto.CreditCardDTO;
-<<<<<<< HEAD
 import com.flightbookingsystem.dto.UpdateCreditCardDTO;
-=======
->>>>>>> ec270f741e24252b45f1cd1c66ea0e49cb7792d1
 import com.flightbookingsystem.exceptions.CreditCardNotFoundException;
 import com.flightbookingsystem.services.CreditCardService;
 import jakarta.validation.Valid;

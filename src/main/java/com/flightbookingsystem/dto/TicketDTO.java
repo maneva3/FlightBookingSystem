@@ -1,8 +1,5 @@
 package com.flightbookingsystem.dto;
 
-<<<<<<< HEAD
-public class TicketDTO {
-=======
 import com.flightbookingsystem.data.entity.Flight;
 import com.flightbookingsystem.data.enums.LuggageType;
 import com.flightbookingsystem.data.enums.TravelClass;
@@ -29,5 +26,4 @@ public class TicketDTO {
 
     @NotNull(message = "Choose luggage type!")
     private LuggageType luggageType;
->>>>>>> ec270f741e24252b45f1cd1c66ea0e49cb7792d1
 }
