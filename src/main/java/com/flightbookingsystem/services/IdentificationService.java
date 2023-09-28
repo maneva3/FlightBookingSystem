@@ -1,10 +1,8 @@
 package com.flightbookingsystem.services;
 
-import com.flightbookingsystem.data.entity.City;
 import com.flightbookingsystem.data.entity.Identification;
 import com.flightbookingsystem.dto.CreateIdentificationDTO;
 import com.flightbookingsystem.dto.IdentificationDTO;
-import com.flightbookingsystem.dto.UpdateIdentificationDTO;
 import jakarta.validation.Valid;
 
 import java.util.List;

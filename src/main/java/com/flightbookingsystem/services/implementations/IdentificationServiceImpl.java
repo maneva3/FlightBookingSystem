@@ -4,13 +4,11 @@ import com.flightbookingsystem.data.entity.Identification;
 import com.flightbookingsystem.data.repository.IdentificationRepository;
 import com.flightbookingsystem.dto.CreateIdentificationDTO;
 import com.flightbookingsystem.dto.IdentificationDTO;
-import com.flightbookingsystem.dto.UpdateIdentificationDTO;
 import com.flightbookingsystem.exceptions.IdentificationNotFoundException;
 import com.flightbookingsystem.services.IdentificationService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 

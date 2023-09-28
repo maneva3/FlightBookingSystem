@@ -1,16 +1,12 @@
 package com.flightbookingsystem.web.view.model;
 
-import com.flightbookingsystem.data.entity.Airport;
-import com.flightbookingsystem.data.entity.City;
 import com.flightbookingsystem.data.entity.Country;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
 import java.util.TimeZone;
 
 @Getter

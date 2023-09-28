@@ -1,6 +1,11 @@
 package com.flightbookingsystem.data.entity;
 
+<<<<<<< HEAD:src/main/java/com/flightbookingsystem/data/entity/UserIdentification.java
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+=======
 import jakarta.persistence.*;
+>>>>>>> main:src/main/java/com/flightbookingsystem/data/entity/User.java
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
