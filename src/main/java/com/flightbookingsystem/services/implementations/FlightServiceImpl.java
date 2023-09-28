@@ -2,6 +2,9 @@ package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.Flight;
 import com.flightbookingsystem.data.repository.FlightRepository;
+import com.flightbookingsystem.dto.CreateFlightDTO;
+import com.flightbookingsystem.dto.FlightDTO;
+import com.flightbookingsystem.dto.UpdateFlightDTO;
 import com.flightbookingsystem.exceptions.FlightNotFoundException;
 import com.flightbookingsystem.services.FlightService;
 import jakarta.validation.Valid;
@@ -26,7 +29,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public List<Flight> getFlights() {
+    public List<FlightDTO> getFlights() {
         return flightRepository.findAll().stream()
                 .map(this::convertToFlightDTO)
                 .collect(Collectors.toList());

@@ -1,6 +1,10 @@
 package com.flightbookingsystem.services;
 
+import com.flightbookingsystem.data.entity.Client;
+import com.flightbookingsystem.dto.ClientDTO;
 import jakarta.validation.Valid;
+
+import java.util.List;
 
 public interface ClientService {
     List<ClientDTO> getClients();

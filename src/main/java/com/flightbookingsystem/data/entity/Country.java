@@ -26,7 +26,6 @@ public class Country {
     @NotBlank(message = "Country name cannot be blank!")
     private String name;
 
-    @Column(name = "cities")
     @OneToMany(targetEntity = City.class, mappedBy = "country")
     private Set<City> cities;
 }

@@ -2,6 +2,9 @@ package com.flightbookingsystem.services;
 
 import com.flightbookingsystem.data.entity.City;
 import com.flightbookingsystem.data.entity.Flight;
+import com.flightbookingsystem.dto.CreateFlightDTO;
+import com.flightbookingsystem.dto.FlightDTO;
+import com.flightbookingsystem.dto.UpdateFlightDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 
