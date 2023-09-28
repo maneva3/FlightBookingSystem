@@ -1,6 +1,5 @@
 package com.flightbookingsystem.services;
 
-import com.flightbookingsystem.data.entity.City;
 import com.flightbookingsystem.data.entity.Flight;
 import com.flightbookingsystem.dto.CreateFlightDTO;
 import com.flightbookingsystem.dto.FlightDTO;

@@ -1,12 +1,15 @@
 package com.flightbookingsystem.dto;
 
 import com.flightbookingsystem.data.entity.City;
+import com.flightbookingsystem.data.entity.Flight;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,4 +24,7 @@ public class AirportDTO {
 
     @NotNull(message = "City must be set!")
     private City city;
+
+    private Set<Flight> departureFlights;
+    private Set<Flight> arrivalFlights;
 }
