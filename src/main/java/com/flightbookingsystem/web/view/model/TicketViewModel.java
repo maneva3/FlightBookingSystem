@@ -3,11 +3,12 @@ package com.flightbookingsystem.web.view.model;
 import com.flightbookingsystem.data.entity.Flight;
 import com.flightbookingsystem.data.enums.LuggageType;
 import com.flightbookingsystem.data.enums.TravelClass;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 

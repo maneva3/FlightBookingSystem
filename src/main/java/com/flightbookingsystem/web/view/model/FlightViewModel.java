@@ -1,16 +1,14 @@
 package com.flightbookingsystem.web.view.model;
 
 import com.flightbookingsystem.data.entity.Airport;
-import com.flightbookingsystem.data.entity.Ticket;
 import com.flightbookingsystem.data.enums.FlightStatus;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.time.Duration;
 import java.time.LocalDate;
-import java.util.Set;
 
 @Getter
 @Setter

@@ -1,6 +1,5 @@
 package com.flightbookingsystem.web.view.controllers;
 
-import com.flightbookingsystem.data.entity.Airport;
 import com.flightbookingsystem.dto.AirportDTO;
 import com.flightbookingsystem.dto.CreateAirportDTO;
 import com.flightbookingsystem.dto.UpdateAirportDTO;

@@ -1,11 +1,13 @@
 package com.flightbookingsystem.web.view.model;
 
-import com.flightbookingsystem.data.entity.PersonalInfo;
 import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.data.enums.Gender;
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
