@@ -35,7 +35,6 @@ public class PersonalInfo {
     @Pattern(regexp = "[0-9]{10}", message = "Phone number must be 10 digits")
     private String phoneNumber;
 
-    @Column(name = "credit_card")
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "card_number", referencedColumnName = "card_number")
     private CreditCard creditCard;

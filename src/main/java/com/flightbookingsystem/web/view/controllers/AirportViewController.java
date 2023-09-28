@@ -53,7 +53,7 @@ public class AirportViewController {
         return "/airports/create-airport";
     }
 
-    @GetMapping("/create")
+    @PostMapping("/create")
     public String createAirport(@Valid @ModelAttribute("airport") CreateAirportViewModel airport, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "airports/create-airport";
@@ -68,7 +68,7 @@ public class AirportViewController {
         return "/airports/update-airport";
     }
 
-    @GetMapping("/update/{code}")
+    @PostMapping("/update/{code}")
     public String updateAirport(@PathVariable("code") String code, @Valid @ModelAttribute("airport") UpdateAirportViewModel airport, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "airports/update-airport";

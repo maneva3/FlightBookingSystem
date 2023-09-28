@@ -10,6 +10,7 @@ import jakarta.validation.constraints.Min;
 
 import java.util.List;
 
+
 public interface AirportService {
     List<AirportDTO> getAirports();
 

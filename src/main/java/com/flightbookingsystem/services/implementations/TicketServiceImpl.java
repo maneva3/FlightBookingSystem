@@ -2,6 +2,9 @@ package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.Ticket;
 import com.flightbookingsystem.data.repository.TicketRepository;
+import com.flightbookingsystem.dto.CreateTicketDTO;
+import com.flightbookingsystem.dto.TicketDTO;
+import com.flightbookingsystem.dto.UpdateTicketDTO;
 import com.flightbookingsystem.exceptions.TicketNotFoundException;
 import com.flightbookingsystem.services.TicketService;
 import jakarta.validation.Valid;
