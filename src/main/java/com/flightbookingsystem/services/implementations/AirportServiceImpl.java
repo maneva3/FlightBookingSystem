@@ -1,6 +1,10 @@
 package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.Airport;
+import com.flightbookingsystem.data.repository.AirportRepository;
+import com.flightbookingsystem.dto.AirportDTO;
+import com.flightbookingsystem.dto.CreateAirportDTO;
+import com.flightbookingsystem.dto.UpdateAirportDTO;
 import com.flightbookingsystem.exceptions.AirportNotFoundException;
 import com.flightbookingsystem.services.AirportService;
 import jakarta.validation.Valid;
@@ -14,9 +18,8 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 public class AirportServiceImpl implements AirportService {
-    private final AirportRepository аirportRepository;
+    private final AirportRepository airportRepository;
     private final ModelMapper modelMapper;
-
 
     private AirportDTO convertToAirportDTO(Airport airport) {
         return modelMapper.map(airport, AirportDTO.class);
