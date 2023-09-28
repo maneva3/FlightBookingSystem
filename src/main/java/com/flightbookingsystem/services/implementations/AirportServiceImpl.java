@@ -21,7 +21,6 @@ public class AirportServiceImpl implements AirportService {
     private final AirportRepository airportRepository;
     private final ModelMapper modelMapper;
 
-
     private AirportDTO convertToAirportDTO(Airport airport) {
         return modelMapper.map(airport, AirportDTO.class);
     }

@@ -19,7 +19,7 @@ import java.util.TimeZone;
 public class City {
     @Id
     @Column(name = "city_code")
-    private String cityCode;
+    private String code;
 
     @Column(name = "name")
     @NotBlank(message = "City name cannot be blank!")

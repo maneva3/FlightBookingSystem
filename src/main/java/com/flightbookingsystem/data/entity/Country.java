@@ -20,7 +20,7 @@ public class Country {
     @Id
     @Column(name = "country_code")
     @Enumerated(EnumType.STRING)
-    private CountryCode countryCode;
+    private CountryCode code;
 
     @Column(name = "name")
     @NotBlank(message = "Country name cannot be blank!")
