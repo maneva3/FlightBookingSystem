@@ -46,6 +46,11 @@ public class Ticket {
     @NotNull(message = "Choose luggage type!")
     private LuggageType luggageType;
 
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "user_id")
+    @NotNull(message = "User must be set!")
+    private User user;
+
     BigDecimal getPrice(TravelClass travelClass, LuggageType luggageType){
         double travelClassMultiplier;
         if (travelClass == TravelClass.ECONOMY){
