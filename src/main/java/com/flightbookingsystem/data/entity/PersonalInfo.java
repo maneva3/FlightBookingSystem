@@ -40,5 +40,5 @@ public class PersonalInfo {
     private CreditCard creditCard;
 
     @OneToOne(mappedBy = "personalInfo")
-    private Client client;
+    private User user;
 }
