@@ -1,6 +1,8 @@
 package com.flightbookingsystem.services;
 
 import com.flightbookingsystem.data.entity.CreditCard;
+import com.flightbookingsystem.dto.CreateCreditCardDTO;
+import com.flightbookingsystem.dto.CreditCardDTO;
 import jakarta.validation.Valid;
 
 import java.util.List;

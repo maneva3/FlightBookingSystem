@@ -2,6 +2,9 @@ package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.City;
 import com.flightbookingsystem.data.repository.CityRepository;
+import com.flightbookingsystem.dto.CityDTO;
+import com.flightbookingsystem.dto.CreateCityDTO;
+import com.flightbookingsystem.dto.UpdateCityDTO;
 import com.flightbookingsystem.exceptions.CityNotFoundException;
 import com.flightbookingsystem.services.CityService;
 import jakarta.validation.Valid;

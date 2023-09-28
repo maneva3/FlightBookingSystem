@@ -2,12 +2,9 @@ package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.Airport;
 import com.flightbookingsystem.data.repository.AirportRepository;
-import com.flightbookingsystem.exceptions.AirportNotFoundException;
-import com.flightbookingsystem.services.AirportService;
-import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Service;
+import com.flightbookingsystem.dto.AirportDTO;
+import com.flightbookingsystem.dto.CreateAirportDTO;
+import com.flightbookingsystem.dto.UpdateAirportDTO;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
@@ -19,8 +16,6 @@ import java.util.stream.Collectors;
 public class AirportServiceImpl implements AirportService {
     private final AirportRepository airportRepository;
     private final ModelMapper modelMapper;
-
-
     private AirportDTO convertToAirportDTO(Airport airport) {
         return modelMapper.map(airport, AirportDTO.class);
     }
