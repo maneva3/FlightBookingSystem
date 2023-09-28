@@ -1,4 +1,4 @@
 package com.flightbookingsystem.dto;
 
-public class ClientDTO {
+public class UserDTO {
 }

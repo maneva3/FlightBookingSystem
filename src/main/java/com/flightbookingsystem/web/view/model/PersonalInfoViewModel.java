@@ -1,12 +1,16 @@
 package com.flightbookingsystem.web.view.model;
 
-import com.flightbookingsystem.data.entity.Client;
 import com.flightbookingsystem.data.entity.CreditCard;
 import com.flightbookingsystem.data.entity.Identification;
+<<<<<<< HEAD
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+=======
+import com.flightbookingsystem.data.entity.User;
+import jakarta.persistence.*;
+>>>>>>> main
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -36,6 +40,6 @@ public class PersonalInfoViewModel {
     @JoinColumn(name = "card_number", referencedColumnName = "card_number")
     private CreditCard creditCard;
 
-    @NotNull(message = "Client must be set!")
-    private Client client;
+    @NotNull(message = "User must be set!")
+    private User user;
 }
