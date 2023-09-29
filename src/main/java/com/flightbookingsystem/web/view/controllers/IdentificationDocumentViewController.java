@@ -7,5 +7,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @AllArgsConstructor
 @RequestMapping(/*TODO*/)
-public class identificationViewController {
+public class IdentificationDocumentViewController {
 }

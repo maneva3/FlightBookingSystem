@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @ToString
-public class IdentificationDTO {
+public class CreateIdentificationDocumentDTO {
 
     @Pattern(regexp = "[a-zA-Z0-9]{13}", message = "Identification number must be 13 symbols")
     private String identificationNumber;
