@@ -10,12 +10,14 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class CreateCreditCardDTO {
     @Pattern(regexp = "[3-5][0-9]{7,18}", message = "Card number must be 8-16 digits")
     private String cardNumber;

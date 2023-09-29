@@ -35,6 +35,6 @@ public class User {
     @OneToMany(targetEntity = Ticket.class, mappedBy = "user")
     private Set<Ticket> tickets;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Role> roles;
+    @ManyToMany(targetEntity = Role.class)
+    private Set<Role> authorities;
 }

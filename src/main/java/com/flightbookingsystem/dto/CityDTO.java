@@ -17,6 +17,7 @@ import java.util.TimeZone;
 @NoArgsConstructor
 @ToString
 public class CityDTO {
+    @NotBlank(message = "City code cannot be blank!")
     private String code;
 
     @NotBlank(message = "City name cannot be blank!")
