@@ -2,6 +2,7 @@ package com.flightbookingsystem.data.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
@@ -20,7 +21,7 @@ public class PersonalInfo {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "identification_number", referencedColumnName = "identification_number")
-    private Identification identification;
+    private IdentificationDocument identificationDocument;
 
     @Column(name = "first_name")
     @NotBlank(message = "First name is required")
@@ -40,5 +41,6 @@ public class PersonalInfo {
     private CreditCard creditCard;
 
     @OneToOne(mappedBy = "personalInfo")
+    @NotNull(message = "User is required")
     private User user;
 }

@@ -1,11 +1,6 @@
 package com.flightbookingsystem.data.entity;
 
-<<<<<<< HEAD:src/main/java/com/flightbookingsystem/data/entity/UserIdentification.java
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-=======
 import jakarta.persistence.*;
->>>>>>> main:src/main/java/com/flightbookingsystem/data/entity/User.java
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -40,6 +35,6 @@ public class User {
     @OneToMany(targetEntity = Ticket.class, mappedBy = "user")
     private Set<Ticket> tickets;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Role> roles;
+    @ManyToMany(targetEntity = Role.class)
+    private Set<Role> authorities;
 }

@@ -2,10 +2,7 @@ package com.flightbookingsystem.data.entity;
 
 import com.flightbookingsystem.data.enums.CreditCardType;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -39,11 +36,14 @@ public class CreditCard {
 
     @Column(name = "card_type")
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "Card type is required")
     private CreditCardType cardType;
 
     @OneToOne(mappedBy = "creditCard")
+    @NotNull(message = "Personal info must be set!")
     private PersonalInfo personalInfo;
 
+    //TODO: Add validation for card number, card holder name, expiry date, cvv in the service layer, not here
     public CreditCard(String cardNumber, String cardHolderName, LocalDate expiryDate, String cvv) {
         this.cardNumber = cardNumber;
         this.cardHolderName = cardHolderName;

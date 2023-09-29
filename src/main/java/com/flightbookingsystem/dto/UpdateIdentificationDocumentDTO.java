@@ -9,5 +9,5 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class UserDTO {
+public class UpdateIdentificationDocumentDTO {
 }

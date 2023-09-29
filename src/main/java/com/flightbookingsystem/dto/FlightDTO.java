@@ -4,10 +4,19 @@ import com.flightbookingsystem.data.entity.Airport;
 import com.flightbookingsystem.data.enums.FlightStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class FlightDTO {
+    @NotNull(message = "Flight id must be set!")
     private Long id;
 
     @NotBlank(message = "Flight number cannot be blank!")
@@ -26,5 +35,5 @@ public class FlightDTO {
     private LocalDate arrivalTime;
 
     @NotNull(message = "Flight status must be set!")
-    private FlightStatus flightStatus = FlightStatus.SCHEDULED;
+    private FlightStatus flightStatus;
 }

@@ -1,6 +1,9 @@
 package com.flightbookingsystem.dto;
 
+import com.flightbookingsystem.data.entity.CreditCard;
+import com.flightbookingsystem.data.entity.User;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,8 +15,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class PersonalInfoDTO {
+    @NotNull
     private Long id;
-    private IdentificationDTO identification;
+
+    private IdentificationDocumentDTO identificationDocument;
 
     @NotBlank(message = "First name is required")
     private String firstName;
@@ -25,5 +30,8 @@ public class PersonalInfoDTO {
     @Pattern(regexp = "[0-9]{10}", message = "Phone number must be 10 digits")
     private String phoneNumber;
 
-    private CreditCardDTO creditCard;
+    private CreditCard creditCard;
+
+    @NotNull(message = "User must be set!")
+    private User user;
 }

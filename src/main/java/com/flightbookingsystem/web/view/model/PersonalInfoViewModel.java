@@ -1,16 +1,12 @@
 package com.flightbookingsystem.web.view.model;
 
 import com.flightbookingsystem.data.entity.CreditCard;
-import com.flightbookingsystem.data.entity.Identification;
-<<<<<<< HEAD
+import com.flightbookingsystem.data.entity.IdentificationDocument;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
-=======
 import com.flightbookingsystem.data.entity.User;
-import jakarta.persistence.*;
->>>>>>> main
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -22,8 +18,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class PersonalInfoViewModel {
-    @NotNull(message = "Identification must be set!")
-    private Identification identification;
+    @NotNull(message = "IdentificationDocument must be set!")
+    private IdentificationDocument identificationDocument;
 
     @NotBlank(message = "First name is required")
     private String firstName;
