@@ -17,10 +17,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @ToString
-public class TicketViewModel {
-    @NotNull(message = "Booking reference cannot be blank!")
-    private String bookingReference;
-
+public class CreateTicketViewModel {
     @NotNull(message = "Flight must be set!")
     private Flight flight;
 

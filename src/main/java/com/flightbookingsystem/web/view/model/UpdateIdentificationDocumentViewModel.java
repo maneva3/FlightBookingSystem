@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @ToString
-public class IdentificationDocumentViewModel {
+public class UpdateIdentificationDocumentViewModel {
     @Pattern(regexp = "[a-zA-Z0-9]{13}", message = "IdentificationDocument number must be 13 symbols")
     private String identificationNumber;
 

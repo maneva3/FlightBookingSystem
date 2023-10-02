@@ -1,7 +1,9 @@
 package com.flightbookingsystem.web.view.model;
 
 import com.flightbookingsystem.data.entity.Airport;
+import com.flightbookingsystem.data.entity.Ticket;
 import com.flightbookingsystem.data.enums.FlightStatus;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -10,12 +12,13 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-public class FlightViewModel {
+public class CreateFlightViewModel {
     @NotBlank(message = "Flight number cannot be blank!")
     private String flightNumber;
 
@@ -31,6 +34,7 @@ public class FlightViewModel {
     @NotNull(message = "Arrival time must be set!")
     private LocalDate arrivalTime;
 
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "Flight status must be set!")
-    private FlightStatus flightStatus;
+    private FlightStatus flightStatus = FlightStatus.SCHEDULED;
 }
