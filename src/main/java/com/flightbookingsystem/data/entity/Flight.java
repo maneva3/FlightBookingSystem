@@ -47,7 +47,7 @@ public class Flight {
     private LocalDate arrivalTime;
 
     @OneToMany(targetEntity = Ticket.class, mappedBy = "flight")
-    private Set<Ticket> ticket;
+    private Set<Ticket> tickets;
 
     @Column(name = "flight_status")
     @Enumerated(EnumType.STRING)
