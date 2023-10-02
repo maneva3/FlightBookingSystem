@@ -1,8 +1,10 @@
 package com.flightbookingsystem.dto;
 
+import com.flightbookingsystem.data.entity.PersonalInfo;
 import com.flightbookingsystem.data.enums.CreditCardType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -34,5 +36,9 @@ public class CreditCardDTO {
     private String cvv;
 
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "Card type is required")
     private CreditCardType cardType;
+
+    @NotNull(message = "Personal info must be set!")
+    private PersonalInfo personalInfo;
 }

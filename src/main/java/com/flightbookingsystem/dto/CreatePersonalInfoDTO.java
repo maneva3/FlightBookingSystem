@@ -12,7 +12,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class CreatePersonalInfoDTO {
-    private Long id;
     private IdentificationDocumentDTO identificationDocument;
 
     @NotBlank(message = "First name is required")

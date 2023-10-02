@@ -1,9 +1,11 @@
 package com.flightbookingsystem.dto;
 
+import com.flightbookingsystem.data.entity.PersonalInfo;
 import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.data.enums.Gender;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,4 +44,7 @@ public class IdentificationDocumentDTO {
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Gender is required")
     private Gender gender;
+
+    @NotNull(message = "Personal info must be set!")
+    private PersonalInfo personalInfo;
 }
