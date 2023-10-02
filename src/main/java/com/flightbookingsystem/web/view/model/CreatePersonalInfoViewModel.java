@@ -1,4 +1,4 @@
-package com.flightbookingsystem.dto;
+package com.flightbookingsystem.web.view.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -11,9 +11,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class CreatePersonalInfoDTO {
-    private IdentificationDocumentDTO identificationDocument;
-
+public class CreatePersonalInfoViewModel {
     @NotBlank(message = "First name is required")
     private String firstName;
 

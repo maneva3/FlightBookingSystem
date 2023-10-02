@@ -8,12 +8,14 @@ import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class IdentificationDocumentViewModel {
     @Pattern(regexp = "[a-zA-Z0-9]{13}", message = "IdentificationDocument number must be 13 symbols")
     private String identificationNumber;

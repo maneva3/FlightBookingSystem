@@ -9,12 +9,14 @@ import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class TicketViewModel {
     @NotNull(message = "Booking reference cannot be blank!")
     private String bookingReference;

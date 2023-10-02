@@ -1,8 +1,11 @@
 package com.flightbookingsystem.dto;
 
 import com.flightbookingsystem.data.entity.Flight;
+import com.flightbookingsystem.data.entity.User;
 import com.flightbookingsystem.data.enums.LuggageType;
 import com.flightbookingsystem.data.enums.TravelClass;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
@@ -18,6 +21,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @ToString
 public class TicketDTO {
+    @NotNull(message = "Booking reference must be set!")
     private String bookingReference;
 
     @NotNull(message = "Flight must be set!")
@@ -34,4 +38,7 @@ public class TicketDTO {
 
     @NotNull(message = "Choose luggage type!")
     private LuggageType luggageType;
+
+    @NotNull(message = "User must be set!")
+    private User user;
 }

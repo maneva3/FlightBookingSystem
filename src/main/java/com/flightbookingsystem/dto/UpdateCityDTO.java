@@ -14,11 +14,9 @@ import java.util.TimeZone;
 @NoArgsConstructor
 @ToString
 public class UpdateCityDTO {
+    @NotBlank(message = "City code cannot be blank!")
     private String code;
 
     @NotBlank(message = "City name cannot be blank!")
     private String name;
-
-    @NotNull(message = "Time zone must be set!")
-    private TimeZone timeZone;
 }

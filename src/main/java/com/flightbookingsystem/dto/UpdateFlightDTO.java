@@ -1,7 +1,9 @@
 package com.flightbookingsystem.dto;
 
 import com.flightbookingsystem.data.entity.Airport;
+import com.flightbookingsystem.data.entity.Ticket;
 import com.flightbookingsystem.data.enums.FlightStatus;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -10,15 +12,13 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
 public class UpdateFlightDTO {
-    @NotNull(message = "Flight id must be set!")
-    private Long id;
-
     @NotBlank(message = "Flight number cannot be blank!")
     private String flightNumber;
 
@@ -35,5 +35,5 @@ public class UpdateFlightDTO {
     private LocalDate arrivalTime;
 
     @NotNull(message = "Flight status must be set!")
-    private FlightStatus flightStatus = FlightStatus.SCHEDULED;
+    private FlightStatus flightStatus;
 }

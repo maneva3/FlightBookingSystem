@@ -1,11 +1,9 @@
-package com.flightbookingsystem.dto;
+package com.flightbookingsystem.web.view.model;
 
-import com.flightbookingsystem.data.entity.PersonalInfo;
 import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.data.enums.Gender;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +16,8 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @ToString
-public class IdentificationDocumentDTO {
-    @NotNull(message = "Identification number must be set!")
-    @Pattern(regexp = "[a-zA-Z0-9]{13}", message = "Identification number must be 13 symbols")
+public class CreateIdentificationDocumentViewModel {
+    @Pattern(regexp = "[a-zA-Z0-9]{13}", message = "IdentificationDocument number must be 13 symbols")
     private String identificationNumber;
 
     @NotBlank(message = "First name is required")
@@ -44,7 +41,5 @@ public class IdentificationDocumentDTO {
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Gender is required")
     private Gender gender;
-
-    @NotNull(message = "Personal info must be set!")
-    private PersonalInfo personalInfo;
 }
+

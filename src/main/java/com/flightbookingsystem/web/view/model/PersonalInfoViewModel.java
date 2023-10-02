@@ -13,14 +13,13 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class PersonalInfoViewModel {
-    @NotNull(message = "IdentificationDocument must be set!")
-    private IdentificationDocument identificationDocument;
-
     @NotBlank(message = "First name is required")
     private String firstName;
 
@@ -30,12 +29,4 @@ public class PersonalInfoViewModel {
     @NotBlank(message = "Phone number is required")
     @Pattern(regexp = "[0-9]{10}", message = "Phone number must be 10 digits")
     private String phoneNumber;
-
-    @Column(name = "credit_card")
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "card_number", referencedColumnName = "card_number")
-    private CreditCard creditCard;
-
-    @NotNull(message = "User must be set!")
-    private User user;
 }

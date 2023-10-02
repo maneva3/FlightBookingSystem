@@ -1,7 +1,9 @@
 package com.flightbookingsystem.dto;
 
 import com.flightbookingsystem.data.entity.CreditCard;
+import com.flightbookingsystem.data.entity.IdentificationDocument;
 import com.flightbookingsystem.data.entity.User;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -15,10 +17,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class PersonalInfoDTO {
-    @NotNull
-    private Long id;
-
-    private IdentificationDocumentDTO identificationDocument;
+    private IdentificationDocument identificationDocument;
 
     @NotBlank(message = "First name is required")
     private String firstName;
@@ -32,6 +31,6 @@ public class PersonalInfoDTO {
 
     private CreditCard creditCard;
 
-    @NotNull(message = "User must be set!")
+    @NotNull(message = "User is required")
     private User user;
 }
