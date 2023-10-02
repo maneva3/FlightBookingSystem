@@ -6,6 +6,7 @@ import com.flightbookingsystem.dto.CountryDTO;
 import com.flightbookingsystem.dto.CreateCountryDTO;
 import com.flightbookingsystem.dto.UpdateCountryDTO;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface CountryService {
 
     Country create(@Valid CreateCountryDTO createCountryDTO);
 
-    Country updateCountry(CountryCode code, @Valid UpdateCountryDTO updateCountryDTO);
+    Country updateCountry(@Min(1) Long id, @Valid UpdateCountryDTO updateCountryDTO);
 
     void deleteCountry(CountryCode code);
 }

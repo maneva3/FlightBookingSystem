@@ -9,6 +9,7 @@ import com.flightbookingsystem.dto.UpdateCountryDTO;
 import com.flightbookingsystem.exceptions.CountryNotFoundException;
 import com.flightbookingsystem.services.CountryService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -47,9 +48,9 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public Country updateCountry(CountryCode code, @Valid UpdateCountryDTO updateCountryDTO) {
+    public Country updateCountry(@Min(1) Long id, @Valid UpdateCountryDTO updateCountryDTO) {
         Country country = modelMapper.map(updateCountryDTO, Country.class);
-        country.setCode(code);
+        country.setId(id);
         return countryRepository.save(country);
     }
 

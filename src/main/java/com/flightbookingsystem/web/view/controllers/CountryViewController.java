@@ -68,12 +68,12 @@ public class CountryViewController {
         return "/countries/update-country";
     }
 
-    @GetMapping("/update/{code}")
-    public String updateCountry(@PathVariable("code") CountryCode code, @Valid @ModelAttribute("country") UpdateCountryViewModel country, BindingResult bindingResult) {
+    @GetMapping("/update/{id}")
+    public String updateCountry(@PathVariable("id") Long id, @Valid @ModelAttribute("country") UpdateCountryViewModel country, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "countries/update-country";
         }
-        countryService.updateCountry(code, modelMapper.map(country, UpdateCountryDTO.class));
+        countryService.updateCountry(id, modelMapper.map(country, UpdateCountryDTO.class));
         return "redirect:/countries";
     }
 
