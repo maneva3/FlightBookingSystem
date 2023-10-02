@@ -17,7 +17,10 @@ import java.util.Set;
 @Table(name = "country")
 public class Country {
     @Id
-    @Column(name = "country_code")
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "country_code", unique = true)
     @Enumerated(EnumType.STRING)
     private CountryCode code;
 
