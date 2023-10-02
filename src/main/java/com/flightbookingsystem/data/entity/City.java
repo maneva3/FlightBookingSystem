@@ -26,6 +26,7 @@ public class City {
     private String name;
 
     @ManyToOne(targetEntity = Country.class)
+
     @JoinColumn(name = "country_id")
     @NotNull(message = "Country must be set!")
     private Country country;
