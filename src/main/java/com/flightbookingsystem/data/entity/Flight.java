@@ -4,8 +4,10 @@ import com.flightbookingsystem.data.enums.FlightStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.Set;
@@ -53,6 +55,10 @@ public class Flight {
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Flight status must be set!")
     private FlightStatus flightStatus = FlightStatus.SCHEDULED;
+
+    @Column(name = "starting_price")
+    @Positive(message = "Price must be positive!")
+    private BigDecimal startingPrice;
 
     public Duration getDuration(){
         return Duration.between(departureTime, arrivalTime).abs();

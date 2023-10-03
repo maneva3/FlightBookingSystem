@@ -32,10 +32,6 @@ public class Ticket {
     @Pattern(regexp = "([1-9]|[1-3][0-9])[A-F]", message = "Seat must be in format: XX[A-F] or X[A-F]")
     private String seat;
 
-    @Column(name = "starting_price")
-    @Positive(message = "Price must be positive!")
-    private BigDecimal startingPrice;
-
     @Column(name = "travel_class")
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Choose travel class!")
@@ -51,7 +47,7 @@ public class Ticket {
     @NotNull(message = "User must be set!")
     private User user;
 
-    BigDecimal getPrice(TravelClass travelClass, LuggageType luggageType){
+    public static BigDecimal getFinalPrice(Flight flight, TravelClass travelClass, LuggageType luggageType){
         double travelClassMultiplier;
         if (travelClass == TravelClass.ECONOMY){
             travelClassMultiplier = 1;
@@ -73,6 +69,6 @@ public class Ticket {
         else {
             luggageTypeMultiplier = 1.5;
         }
-        return BigDecimal.valueOf(startingPrice.doubleValue()*travelClassMultiplier*luggageTypeMultiplier);
+        return BigDecimal.valueOf(flight.getStartingPrice().doubleValue()*travelClassMultiplier*luggageTypeMultiplier);
     }
 }
