@@ -13,11 +13,11 @@ import java.util.List;
 public interface CountryService {
     List<CountryDTO> getCountries();
 
-    CountryDTO getCountry(CountryCode code);
+    CountryDTO getCountry(Long id);
 
     Country create(@Valid CreateCountryDTO createCountryDTO);
 
     Country updateCountry(@Min(1) Long id, @Valid UpdateCountryDTO updateCountryDTO);
 
-    void deleteCountry(CountryCode code);
+    void deleteCountry(Long id);
 }

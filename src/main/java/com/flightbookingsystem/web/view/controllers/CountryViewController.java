@@ -77,9 +77,9 @@ public class CountryViewController {
         return "redirect:/countries";
     }
 
-    @GetMapping("/delete/{code}")
-    public String deleteCountry(@PathVariable("code") CountryCode code) {
-        countryService.deleteCountry(code);
+    @GetMapping("/delete/{id}")
+    public String deleteCountry(@PathVariable("id") Long id) {
+        countryService.deleteCountry(id);
         return "redirect:/countries";
     }
 }

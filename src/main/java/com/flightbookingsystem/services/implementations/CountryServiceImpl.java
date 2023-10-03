@@ -37,9 +37,9 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public CountryDTO getCountry(CountryCode code) {
-        return modelMapper.map(countryRepository.findById(code)
-                .orElseThrow(() -> new CountryNotFoundException("Country with code " + code + " not found")), CountryDTO.class);
+    public CountryDTO getCountry(Long id) {
+        return modelMapper.map(countryRepository.findById(id)
+                .orElseThrow(() -> new CountryNotFoundException("Country with code " + id + " not found")), CountryDTO.class);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public void deleteCountry(CountryCode code) {
-        countryRepository.deleteById(code);
+    public void deleteCountry(Long id) {
+        countryRepository.deleteById(id);
     }
 }
