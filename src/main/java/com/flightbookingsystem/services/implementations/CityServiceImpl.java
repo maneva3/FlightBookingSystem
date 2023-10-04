@@ -56,4 +56,11 @@ public class CityServiceImpl implements CityService {
     public void deleteCity(String code) {
         cityRepository.deleteById(code);
     }
+
+    @Override
+    public List<CityDTO> getCitiesByNameOrCode(String nameOrCode) {
+        return cityRepository.findAllByNameContainingIgnoreCaseOrCodeContainingIgnoreCaseOrderByNameAsc(nameOrCode, nameOrCode).stream()
+                .map(this::convertToCityDTO)
+                .collect(Collectors.toList());
+    }
 }

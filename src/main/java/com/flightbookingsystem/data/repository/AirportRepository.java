@@ -14,4 +14,5 @@ public interface AirportRepository extends JpaRepository<Airport, String> {
     List<Airport> findAllByNameStartingWith(String name, Sort sort);
     List<Airport> findAllByCityNameAndNameStartingWith(String cityName, String name, Sort sort);
     List<Airport> findAllByNameOrCityNameOrCodeOrCityCodeStartingWith(String cityName, String airportName, String airportCode, String cityCode, Sort sort);
+    List<Airport> findAllByNameContainingIgnoreCaseOrCodeContainingIgnoreCaseOrderByNameAsc(String name, String code);
 }

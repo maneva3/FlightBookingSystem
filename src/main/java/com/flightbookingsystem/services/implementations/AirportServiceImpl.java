@@ -56,4 +56,11 @@ public class AirportServiceImpl implements AirportService {
     public void deleteAirport(String code) {
         airportRepository.deleteById(code);
     }
+
+    @Override
+    public List<AirportDTO> getAirportsByNameOrCode(String nameOrCode) {
+        return airportRepository.findAllByNameContainingIgnoreCaseOrCodeContainingIgnoreCaseOrderByNameAsc(nameOrCode, nameOrCode).stream()
+                .map(this::convertToAirportDTO)
+                .collect(Collectors.toList());
+    }
 }
