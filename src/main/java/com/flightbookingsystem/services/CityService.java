@@ -18,4 +18,6 @@ public interface CityService {
     City updateCity(String code, @Valid UpdateCityDTO updateCityDTO);
 
     void deleteCity(String code);
+
+    List<CityDTO> getCitiesByNameOrCode(String nameOrCode);
 }

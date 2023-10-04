@@ -20,4 +20,6 @@ public interface CountryService {
     Country updateCountry(@Min(1) Long id, @Valid UpdateCountryDTO updateCountryDTO);
 
     void deleteCountry(Long id);
+
+    List<CountryDTO> getCountriesByNameOrCode(String nameOrCode);
 }

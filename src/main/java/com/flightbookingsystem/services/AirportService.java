@@ -19,4 +19,6 @@ public interface AirportService {
     Airport updateAirport(String code, @Valid UpdateAirportDTO updateAirportDTO);
 
     void deleteAirport(String code);
+
+    List<AirportDTO> getAirportsByNameOrCode(String nameOrCode);
 }

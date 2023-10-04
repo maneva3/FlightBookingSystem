@@ -1,7 +1,6 @@
 package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.Country;
-import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.data.repository.CountryRepository;
 import com.flightbookingsystem.dto.CountryDTO;
 import com.flightbookingsystem.dto.CreateCountryDTO;
@@ -57,5 +56,13 @@ public class CountryServiceImpl implements CountryService {
     @Override
     public void deleteCountry(Long id) {
         countryRepository.deleteById(id);
+    }
+
+
+    @Override
+    public List<CountryDTO> getCountriesByNameOrCode(String nameOrCode) {
+        return countryRepository.findAllByNameContainingIgnoreCaseOrCodeContainingIgnoreCaseOrderByNameAsc(nameOrCode, nameOrCode).stream()
+                .map(this::convertToCountryDTO)
+                .collect(Collectors.toList());
     }
 }
