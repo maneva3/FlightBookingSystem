@@ -12,6 +12,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -22,10 +23,10 @@ public class UpdateFlightViewModel {
     private String flightNumber;
 
     @NotNull(message = "Departure time must be set!")
-    private LocalDate departureTime;
+    private LocalDateTime departureTime;
 
     @NotNull(message = "Arrival time must be set!")
-    private LocalDate arrivalTime;
+    private LocalDateTime arrivalTime;
 
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Flight status must be set!")

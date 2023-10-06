@@ -13,6 +13,7 @@ import lombok.ToString;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Getter
@@ -30,10 +31,10 @@ public class FlightDTO {
     private Airport arrivalAirport;
 
     @NotNull(message = "Departure time must be set!")
-    private LocalDate departureTime;
+    private LocalDateTime departureTime;
 
     @NotNull(message = "Arrival time must be set!")
-    private LocalDate arrivalTime;
+    private LocalDateTime arrivalTime;
 
     private Set<Ticket> tickets;
 

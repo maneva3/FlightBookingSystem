@@ -31,7 +31,7 @@ public class PersonalInfo {
     @NotBlank(message = "Last name is required")
     private String lastName;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", unique = true)
     @NotBlank(message = "Phone number is required")
     @Pattern(regexp = "[0-9]{10}", message = "Phone number must be 10 digits")
     private String phoneNumber;
