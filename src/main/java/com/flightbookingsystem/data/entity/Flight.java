@@ -10,6 +10,7 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Getter
@@ -42,11 +43,11 @@ public class Flight {
 
     @Column(name = "departure_time")
     @NotNull(message = "Departure time must be set!")
-    private LocalDate departureTime;
+    private LocalDateTime departureTime;
 
     @Column(name = "arrival_time")
     @NotNull(message = "Arrival time must be set!")
-    private LocalDate arrivalTime;
+    private LocalDateTime arrivalTime;
 
     @OneToMany(targetEntity = Ticket.class, mappedBy = "flight")
     private Set<Ticket> tickets;
