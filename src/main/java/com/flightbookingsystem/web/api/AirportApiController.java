@@ -30,7 +30,7 @@ public class AirportApiController {
         return airportService.getAirports();
     }
 
-    @RequestMapping("/{code}")
+    @GetMapping("/{code}")
     public AirportDTO getAirport(@PathVariable("code") String code){
         return airportService.getAirport(code);
     }

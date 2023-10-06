@@ -27,7 +27,7 @@ public class CityApiController {
         return cityService.getCities();
     }
 
-    @RequestMapping("/{code}")
+    @GetMapping("/{code}")
     public CityDTO getCity(@PathVariable("code") String code){
         return cityService.getCity(code);
     }

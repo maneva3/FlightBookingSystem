@@ -31,7 +31,7 @@ public class CountryApiController {
         return countryService.getCountries();
     }
 
-    @RequestMapping("/{id}")
+    @GetMapping("/{id}")
     public CountryDTO getCountry(@PathVariable("id") Long id){
         return countryService.getCountry(id);
     }

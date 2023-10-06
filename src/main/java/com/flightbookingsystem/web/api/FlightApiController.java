@@ -26,7 +26,7 @@ public class FlightApiController {
         return flightService.getFlights();
     }
 
-    @RequestMapping("/{id}")
+    @GetMapping("/{id}")
     public FlightDTO getFlight(@PathVariable("id") Long id){
         return flightService.getFlight(id);
     }

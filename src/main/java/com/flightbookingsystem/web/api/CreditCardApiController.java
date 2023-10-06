@@ -3,9 +3,11 @@ package com.flightbookingsystem.web.api;
 import com.flightbookingsystem.data.entity.CreditCard;
 import com.flightbookingsystem.dto.CreateCreditCardDTO;
 import com.flightbookingsystem.dto.CreditCardDTO;
+import com.flightbookingsystem.dto.UpdateCreditCardDTO;
 import com.flightbookingsystem.services.CreditCardService;
 import com.flightbookingsystem.web.view.model.CreateCreditCardViewModel;
 import com.flightbookingsystem.web.view.model.CreditCardViewModel;
+import com.flightbookingsystem.web.view.model.UpdateCreditCardViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.validation.BindingResult;
@@ -23,14 +25,19 @@ public class CreditCardApiController {
     }
 
 
-    @RequestMapping
-    public CreditCardDTO getCreditCard(@PathVariable("cardNumber") String cardNumber){
+    @GetMapping
+    public CreditCardDTO getCreditCard(@RequestParam String cardNumber){
         return creditCardService.getCreditCard(cardNumber);
     }
 
     @PostMapping
-    public CreditCard createCreditCard(@RequestBody CreateCreditCardViewModel creditCard, BindingResult bindingResult) {
+    public CreditCard createCreditCard(@RequestBody CreateCreditCardViewModel creditCard) {
         return creditCardService.create(modelMapper.map(creditCard, CreateCreditCardDTO.class));
+    }
+
+    @PutMapping("/{cardNumber}")
+    public CreditCard updateCreditCard(@PathVariable("cardNumber") String cardNumber, @RequestBody UpdateCreditCardViewModel creditCard) {
+        return creditCardService.updateCreditCard(cardNumber, modelMapper.map(creditCard, UpdateCreditCardDTO.class));
     }
 
     @DeleteMapping("/{cardNumber}")

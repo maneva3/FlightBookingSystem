@@ -3,9 +3,11 @@ package com.flightbookingsystem.web.api;
 import com.flightbookingsystem.data.entity.IdentificationDocument;
 import com.flightbookingsystem.dto.CreateIdentificationDocumentDTO;
 import com.flightbookingsystem.dto.IdentificationDocumentDTO;
+import com.flightbookingsystem.dto.UpdateIdentificationDocumentDTO;
 import com.flightbookingsystem.services.IdentificationDocumentService;
 import com.flightbookingsystem.web.view.model.CreateIdentificationDocumentViewModel;
 import com.flightbookingsystem.web.view.model.IdentificationDocumentViewModel;
+import com.flightbookingsystem.web.view.model.UpdateIdentificationDocumentViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.validation.BindingResult;
@@ -22,19 +24,27 @@ public class IdentificationDocumentApiController {
         return modelMapper.map(identificationDocumentDTO, IdentificationDocumentViewModel.class);
     }
 
-
-    @RequestMapping
+    @GetMapping("/{identificationNumber}")
     public IdentificationDocumentDTO getIdentificationDocument(@PathVariable("identificationNumber") String identificationNumber){
         return identificationDocumentService.getIdentificationDocument(identificationNumber);
     }
 
     @PostMapping
-    public IdentificationDocument createIdentificationDocument(@RequestBody CreateIdentificationDocumentViewModel identificationDocument, BindingResult bindingResult) {
+    public IdentificationDocument createIdentificationDocument(@RequestBody CreateIdentificationDocumentViewModel identificationDocument) {
         return identificationDocumentService.create(modelMapper.map(identificationDocument, CreateIdentificationDocumentDTO.class));
     }
+
+    @PutMapping("/{identificationNumber}")
+    public IdentificationDocument updateIdentificationDocument(@PathVariable("identificationNumber") String identificationNumber,
+                                                               @RequestBody UpdateIdentificationDocumentViewModel identificationDocument) {
+        return identificationDocumentService.updateIdentificationDocument(identificationNumber, modelMapper.map(identificationDocument, UpdateIdentificationDocumentDTO.class));
+    }
+
 
     @DeleteMapping("/{identificationNumber}")
     public void deleteIdentificationDocument(@PathVariable("identificationNumber") String identificationNumber) {
         identificationDocumentService.deleteIdentificationDocument(identificationNumber);
     }
+
+
 }
