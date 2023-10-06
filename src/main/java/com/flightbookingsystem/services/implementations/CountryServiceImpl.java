@@ -61,7 +61,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public List<CountryDTO> getCountriesByNameOrCode(String nameOrCode) {
-        return countryRepository.findAllByNameContainingIgnoreCaseOrCodeContainingIgnoreCaseOrderByNameAsc(nameOrCode, nameOrCode).stream()
+        return countryRepository.findAllByNameContainingIgnoreCaseOrCodeContainingIgnoreCaseOrderByNameAsc(nameOrCode).stream()
                 .map(this::convertToCountryDTO)
                 .collect(Collectors.toList());
     }
