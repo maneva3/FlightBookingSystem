@@ -3,22 +3,20 @@ package com.flightbookingsystem.web.api;
 import com.flightbookingsystem.data.entity.Airport;
 import com.flightbookingsystem.data.entity.City;
 import com.flightbookingsystem.data.entity.Country;
+import com.flightbookingsystem.dto.CountryDTO;
 import com.flightbookingsystem.services.AirportService;
 import com.flightbookingsystem.services.CityService;
 import com.flightbookingsystem.services.CountryService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/search")
 @AllArgsConstructor
+@RequestMapping("/search")
 public class SearchApiController {
     private AirportService airportService;
     private CityService cityService;
@@ -32,4 +30,10 @@ public class SearchApiController {
         results.put("countries", countryService.getCountriesByNameOrCode(nameOrCode));
         return results;
     }
+
+    @GetMapping ("search-country/{nameOrCode}")
+    List<CountryDTO> searchCountries(@RequestParam("nameOrCode") @PathVariable("nameOrCode") String nameOrCode) {
+        return countryService.getCountriesByNameOrCode(nameOrCode);
+    }
 }
+
