@@ -6,7 +6,8 @@ import lombok.Getter;
 public enum CreditCardType {
     VISA("Visa"),
     MASTERCARD("Mastercard"),
-    AMERICAN_EXPRESS("American Express");
+    AMERICAN_EXPRESS("American Express"),
+    UNKNOWN("Unknown");
 
     private final String creditCardType;
 
