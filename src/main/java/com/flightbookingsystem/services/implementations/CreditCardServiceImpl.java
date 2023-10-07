@@ -1,6 +1,7 @@
 package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.CreditCard;
+import com.flightbookingsystem.data.enums.CreditCardType;
 import com.flightbookingsystem.data.repository.CreditCardRepository;
 import com.flightbookingsystem.dto.CreateCreditCardDTO;
 import com.flightbookingsystem.dto.CreditCardDTO;
@@ -43,7 +44,9 @@ public class CreditCardServiceImpl implements CreditCardService {
 
     @Override
     public CreditCard create(@Valid CreateCreditCardDTO createCreditCardDTO) {
-        return creditCardRepository.save(modelMapper.map(createCreditCardDTO, CreditCard.class));
+        CreditCard creditCard = modelMapper.map(createCreditCardDTO, CreditCard.class);
+        creditCard.setCardType(determineCardType(creditCard.getCardNumber()));
+        return creditCardRepository.save(creditCard);
     }
 
     @Override
@@ -56,5 +59,16 @@ public class CreditCardServiceImpl implements CreditCardService {
     @Override
     public void deleteCreditCard(String cardNumber) {
         creditCardRepository.deleteById(cardNumber);
+    }
+
+    private CreditCardType determineCardType(String cardNumber) {
+        if (cardNumber.startsWith("3")) {
+            return CreditCardType.AMERICAN_EXPRESS;
+        } else if (cardNumber.startsWith("4")) {
+            return CreditCardType.VISA;
+        } else if(cardNumber.startsWith("5")) {
+            return CreditCardType.MASTERCARD;
+        } else
+            return CreditCardType.UNKNOWN;
     }
 }
