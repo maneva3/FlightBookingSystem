@@ -5,7 +5,10 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.Set;
 
 @Getter
@@ -16,7 +19,7 @@ import java.util.Set;
 @ToString
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements UserDetails {
     @Id
     @Column(name = "username")
     @Email(regexp = ".+[@].+[\\.].+", message = "Invalid email format!")
@@ -35,6 +38,41 @@ public class User {
     @OneToMany(targetEntity = Ticket.class, mappedBy = "user")
     private Set<Ticket> tickets;
 
-    @ManyToMany(targetEntity = Role.class)
-    private Set<Role> authorities;
+    @ManyToMany(fetch = FetchType.EAGER)
+    protected Set<Role> authorities;
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.authorities;
+    }
+
+    @Override
+    public String getUsername(){
+        return username;
+    }
+
+    @Override
+    public String getPassword(){
+        return password;
+    }
 }

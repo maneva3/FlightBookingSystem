@@ -2,6 +2,7 @@ package com.flightbookingsystem.data.entity;
 
 import com.flightbookingsystem.data.enums.CreditCardType;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -42,21 +43,4 @@ public class CreditCard {
     @OneToOne(mappedBy = "creditCard")
     @NotNull(message = "Personal info must be set!")
     private PersonalInfo personalInfo;
-
-    //TODO: Add validation for card number, card holder name, expiry date, cvv in the service layer, not here
-    public CreditCard(String cardNumber, String cardHolderName, LocalDate expiryDate, String cvv) {
-        this.cardNumber = cardNumber;
-        this.cardHolderName = cardHolderName;
-        this.expiryDate = expiryDate;
-        this.cvv = cvv;
-        this.cardType = determineCardType(cardNumber);
-    }
-    private CreditCardType determineCardType(String cardNumber) {
-        if (cardNumber.startsWith("3")) {
-            return CreditCardType.AMERICAN_EXPRESS;
-        } else if (cardNumber.startsWith("4")) {
-            return CreditCardType.VISA;
-        } else
-            return CreditCardType.MASTERCARD;
-    }
 }
