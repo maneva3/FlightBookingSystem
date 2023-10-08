@@ -19,4 +19,6 @@ public interface FlightService {
     Flight updateFlight(@Min(1) Long id, @Valid UpdateFlightDTO updateFlightDTO);
 
     void deleteFlight(Long id);
+
+    String getDurationOfFlightAsString(@Min(1) Long id);
 }

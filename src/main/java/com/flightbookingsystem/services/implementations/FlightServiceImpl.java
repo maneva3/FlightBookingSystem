@@ -1,11 +1,13 @@
 package com.flightbookingsystem.services.implementations;
 
+import com.flightbookingsystem.data.entity.City;
 import com.flightbookingsystem.data.entity.Flight;
 import com.flightbookingsystem.data.repository.FlightRepository;
 import com.flightbookingsystem.dto.CreateFlightDTO;
 import com.flightbookingsystem.dto.FlightDTO;
 import com.flightbookingsystem.dto.UpdateFlightDTO;
 import com.flightbookingsystem.exceptions.FlightNotFoundException;
+import com.flightbookingsystem.exceptions.InvalidDurationException;
 import com.flightbookingsystem.services.FlightService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
@@ -14,6 +16,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,5 +61,28 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public void deleteFlight(Long id) {
         flightRepository.deleteById(id);
+    }
+
+    @Override
+    public String getDurationOfFlightAsString(@Min(1) Long id) {
+        City departureCity = getFlight(id).getDepartureAirport().getCity();
+        City arrivalCity = getFlight(id).getArrivalAirport().getCity();
+
+        int timeZoneOffSetInMinutesDepartureCity= departureCity.getTimeZone().getRawOffset() / 60000;
+        int timeZoneOffSetInMinutesArrivalCity = arrivalCity.getTimeZone().getRawOffset() / 60000;
+
+        int offSetBetweenAirportsInMinutes = timeZoneOffSetInMinutesDepartureCity - timeZoneOffSetInMinutesArrivalCity;
+
+        LocalDateTime departureTime = getFlight(id).getDepartureTime();
+        LocalDateTime arrivalTime = getFlight(id).getArrivalTime();
+
+        LocalDateTime arrivalTimeWithOffset = arrivalTime.plusMinutes(offSetBetweenAirportsInMinutes);
+        Duration flightDuration = Duration.between(departureTime, arrivalTimeWithOffset);
+
+        if (flightDuration.isNegative()){
+            throw new InvalidDurationException("Flight duration cannot be negative!");
+        }
+        //return flightDuration;
+        return flightDuration.toHours() + " hours and " + flightDuration.toMinutesPart() + " minutes";
     }
 }
