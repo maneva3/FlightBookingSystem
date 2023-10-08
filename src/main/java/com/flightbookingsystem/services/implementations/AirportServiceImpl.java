@@ -63,4 +63,11 @@ public class AirportServiceImpl implements AirportService {
                 .map(this::convertToAirportDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<AirportDTO> getAirportsByName(String name) {
+        return airportRepository.findAllByName(name).stream()
+                .map(this::convertToAirportDTO)
+                .collect(Collectors.toList());
+    }
 }

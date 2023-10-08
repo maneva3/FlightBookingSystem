@@ -21,4 +21,6 @@ public interface AirportService {
     void deleteAirport(String code);
 
     List<AirportDTO> getAirportsByNameOrCode(String nameOrCode);
+
+    List<AirportDTO> getAirportsByName(String name);
 }
