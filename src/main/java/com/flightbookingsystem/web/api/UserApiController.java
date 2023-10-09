@@ -1,9 +1,13 @@
 package com.flightbookingsystem.web.api;
 
+import com.flightbookingsystem.data.entity.PersonalInfo;
+import com.flightbookingsystem.data.entity.Role;
 import com.flightbookingsystem.data.entity.User;
+import com.flightbookingsystem.dto.CreatePersonalInfoDTO;
 import com.flightbookingsystem.dto.UserDTO;
 import com.flightbookingsystem.dto.CreateUserDTO;
 import com.flightbookingsystem.dto.UpdateUserDTO;
+import com.flightbookingsystem.services.PersonalInfoService;
 import com.flightbookingsystem.services.UserService;
 import com.flightbookingsystem.web.view.model.UserViewModel;
 import com.flightbookingsystem.web.view.model.CreateUserViewModel;
@@ -12,13 +16,16 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/users")
 public class UserApiController {
     private final UserService userService;
+    private final PersonalInfoService personalInfoService;
     private final ModelMapper modelMapper;
 
     private UserViewModel convertToUserViewModel(UserDTO userDTO) {
@@ -31,7 +38,17 @@ public class UserApiController {
 
     @PostMapping
     public User createUser(@RequestBody CreateUserViewModel user) {
-        return userService.create(modelMapper.map(user, CreateUserDTO.class));
+        CreatePersonalInfoDTO personalInfoDTO = new CreatePersonalInfoDTO(user.getFirstName(), user.getLastName(), user.getPhoneNumber());
+        personalInfoService.create(personalInfoDTO);
+
+        Role userRole = new Role();
+        userRole.setAuthority("USER");
+
+        Set<Role> roles = new HashSet<>();
+        roles.add(userRole);
+
+        CreateUserDTO createUserDTO = new CreateUserDTO(user.getUsername(), user.getPassword(), modelMapper.map(personalInfoDTO, PersonalInfo.class), roles);
+        return userService.create(createUserDTO);
     }
 
     @PutMapping("/{code}")

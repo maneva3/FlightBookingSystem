@@ -23,4 +23,14 @@ public class CreateUserViewModel {
     @Pattern(regexp = "^(?=.[a-z])(?=.[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", message = "The password must contain at least 1 uppercase letter, 1 lowercase letter and 1 digit!")
     @Size(min = 8, max = 64, message = "The password must contain at least 8 characters!")
     private String password;
+
+    @NotBlank(message = "First name is required!")
+    private String firstName;
+
+    @NotBlank(message = "Last name is required!")
+    private String lastName;
+
+    @NotBlank(message = "Phone number is required!")
+    @Pattern(regexp = "[0-9]{10}", message = "Phone number must be 10 digits!")
+    private String phoneNumber;
 }

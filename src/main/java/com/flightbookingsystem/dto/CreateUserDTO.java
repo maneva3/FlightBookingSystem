@@ -5,16 +5,14 @@ import com.flightbookingsystem.data.entity.Role;
 import com.flightbookingsystem.data.entity.Ticket;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class CreateUserDTO {
     @NotBlank(message = "Username cannot be blank!")

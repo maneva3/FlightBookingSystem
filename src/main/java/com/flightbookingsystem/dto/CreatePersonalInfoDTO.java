@@ -2,18 +2,14 @@ package com.flightbookingsystem.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class CreatePersonalInfoDTO {
-    private IdentificationDocumentDTO identificationDocument;
-
     @NotBlank(message = "First name is required")
     private String firstName;
 
