@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @AllArgsConstructor
 @RequestMapping("/login")
 public class LoginApiController {
-    @GetMapping("/login")
-    public String getLogin(Model model, Authentication authentication) {
-        Authentication authentication2 = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("username", authentication.getName());
-
-        User principal = (User) authentication.getPrincipal();
-        model.addAttribute("username", principal.getAuthorities());
+    @RequestMapping
+    public String getLogin() {
+//        Authentication authentication2 = SecurityContextHolder.getContext().getAuthentication();
+//        model.addAttribute("username", authentication.getName());
+//
+//        User principal = (User) authentication.getPrincipal();
+//        model.addAttribute("username", principal.getAuthorities());
         return "login";
     }
 
