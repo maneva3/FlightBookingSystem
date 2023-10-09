@@ -24,7 +24,7 @@ public class Ticket {
     private String bookingReference;
 
     @ManyToOne(targetEntity = Flight.class)
-    @JoinColumn(name = "ticket_id")
+    @JoinColumn(name = "flight_id")
     @NotNull(message = "Flight must be set!")
     private Flight flight;
 
