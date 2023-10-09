@@ -1,5 +1,6 @@
 package com.flightbookingsystem.data.entity;
 
+import com.flightbookingsystem.config.DurationConverter;
 import com.flightbookingsystem.data.enums.FlightStatus;
 import com.flightbookingsystem.exceptions.InvalidDurationException;
 import jakarta.persistence.*;
@@ -64,5 +65,6 @@ public class Flight {
     private BigDecimal startingPrice;
 
     @Column(name = "duration")
+    @Convert(converter = DurationConverter.class)
     private Duration duration;
 }
