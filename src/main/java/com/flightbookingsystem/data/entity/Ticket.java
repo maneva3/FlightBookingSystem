@@ -47,31 +47,6 @@ public class Ticket {
     @NotNull(message = "User must be set!")
     private User user;
 
-    public static BigDecimal getFinalPrice(Flight flight, TravelClass travelClass, LuggageType luggageType){
-        double travelClassMultiplier;
-        if (travelClass == TravelClass.ECONOMY){
-            travelClassMultiplier = 1;
-        }
-        else if(travelClass == TravelClass.BUSINESS){
-            travelClassMultiplier = 1.3;
-        }
-        else {
-            travelClassMultiplier = 2;
-        }
-
-        double luggageTypeMultiplier;
-        if (luggageType == LuggageType.FREE){
-            luggageTypeMultiplier = 1;
-        }
-        else if(luggageType == LuggageType.CABIN){
-            luggageTypeMultiplier = 1.2;
-        }
-        else {
-            luggageTypeMultiplier = 1.5;
-        }
-        return BigDecimal.valueOf(flight.getStartingPrice().doubleValue()*travelClassMultiplier*luggageTypeMultiplier);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

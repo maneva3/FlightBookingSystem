@@ -20,5 +20,5 @@ public interface FlightService {
 
     void deleteFlight(Long id);
 
-    String getDurationOfFlightAsString(@Min(1) Long id);
+    String getDurationOfFlightAsString(Flight flight);
 }

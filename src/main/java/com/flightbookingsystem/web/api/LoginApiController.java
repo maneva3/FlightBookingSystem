@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/login")
+@RequestMapping
 public class LoginApiController {
-    @RequestMapping
+    @RequestMapping("/login")
     public String getLogin() {
 //        Authentication authentication2 = SecurityContextHolder.getContext().getAuthentication();
 //        model.addAttribute("username", authentication.getName());

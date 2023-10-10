@@ -26,15 +26,19 @@ public class UpdateIdentificationDocumentDTO {
     @NotBlank(message = "Last name is required")
     private String lastName;
 
+    @NotNull(message = "Date of birth is required")
     @Past(message = "Date of birth must be in the past")
     private LocalDate dateOfBirth;
 
-    @FutureOrPresent(message = "Expiry date must not be in the past")
+    @NotNull(message = "Expiry date is required")
+    @Future(message = "Expiry date must be in the future")
     private LocalDate expiryDate;
 
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "Country name is required")
     private CountryCode nationality;
 
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "Gender is required")
     private Gender gender;
 }

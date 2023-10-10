@@ -23,7 +23,6 @@ public class CountryViewModel {
     @Enumerated(EnumType.STRING)
     private CountryCode code;
 
-    @Column(name = "name")
     @NotBlank(message = "Country name cannot be blank!")
     private String name;
 

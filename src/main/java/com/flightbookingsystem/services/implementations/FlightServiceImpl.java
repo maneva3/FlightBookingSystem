@@ -2,6 +2,8 @@ package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.City;
 import com.flightbookingsystem.data.entity.Flight;
+import com.flightbookingsystem.data.enums.LuggageType;
+import com.flightbookingsystem.data.enums.TravelClass;
 import com.flightbookingsystem.data.repository.FlightRepository;
 import com.flightbookingsystem.dto.CreateFlightDTO;
 import com.flightbookingsystem.dto.FlightDTO;
@@ -15,7 +17,9 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PutMapping;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -48,13 +52,16 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public Flight create(@Valid CreateFlightDTO createFlightDTO) {
-        return flightRepository.save(modelMapper.map(createFlightDTO, Flight.class));
+        Flight createFlight = modelMapper.map(createFlightDTO, Flight.class);
+        setDuration(createFlight);
+        return flightRepository.save(createFlight);
     }
 
     @Override
     public Flight updateFlight(@Min(1) Long id, @Valid UpdateFlightDTO updateFlightDTO) {
         Flight flight = modelMapper.map(updateFlightDTO, Flight.class);
         flight.setId(id);
+        setDuration(flight);
         return flightRepository.save(flight);
     }
 
@@ -64,17 +71,21 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public String getDurationOfFlightAsString(@Min(1) Long id) {
-        City departureCity = getFlight(id).getDepartureAirport().getCity();
-        City arrivalCity = getFlight(id).getArrivalAirport().getCity();
+    public String getDurationOfFlightAsString(Flight flight) {
+        return flight.getDuration().toHours() + " hours and " + flight.getDuration().toMinutesPart() + " minutes";
+    }
+
+    private void setDuration(Flight flight){
+        City departureCity = flight.getDepartureAirport().getCity();
+        City arrivalCity = flight.getArrivalAirport().getCity();
 
         int timeZoneOffSetInMinutesDepartureCity= departureCity.getTimeZone().getRawOffset() / 60000;
         int timeZoneOffSetInMinutesArrivalCity = arrivalCity.getTimeZone().getRawOffset() / 60000;
 
         int offSetBetweenAirportsInMinutes = timeZoneOffSetInMinutesDepartureCity - timeZoneOffSetInMinutesArrivalCity;
 
-        LocalDateTime departureTime = getFlight(id).getDepartureTime();
-        LocalDateTime arrivalTime = getFlight(id).getArrivalTime();
+        LocalDateTime departureTime = flight.getDepartureTime();
+        LocalDateTime arrivalTime = flight.getArrivalTime();
 
         LocalDateTime arrivalTimeWithOffset = arrivalTime.plusMinutes(offSetBetweenAirportsInMinutes);
         Duration flightDuration = Duration.between(departureTime, arrivalTimeWithOffset);
@@ -82,7 +93,6 @@ public class FlightServiceImpl implements FlightService {
         if (flightDuration.isNegative()){
             throw new InvalidDurationException("Flight duration cannot be negative!");
         }
-        //return flightDuration;
-        return flightDuration.toHours() + " hours and " + flightDuration.toMinutesPart() + " minutes";
+        flight.setDuration(flightDuration);
     }
 }

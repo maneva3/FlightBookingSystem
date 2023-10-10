@@ -27,9 +27,6 @@ public class TicketViewModel {
     @Pattern(regexp = "([1-9]|[1-3][0-9])[A-F]", message = "Seat must be in format: XX[A-F] or X[A-F]")
     private String seat;
 
-    @Positive(message = "Price must be positive!")
-    private BigDecimal startingPrice;
-
     @NotNull(message = "Choose travel class!")
     private TravelClass travelClass;
 
