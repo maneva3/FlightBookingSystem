@@ -23,4 +23,16 @@ public interface AirportService {
     List<AirportDTO> getAirportsByNameOrCode(String nameOrCode);
 
     List<AirportDTO> getAirportsByName(String name);
+
+    List<AirportDTO> getAirportsByCityName(String name);
+
+    List<AirportDTO> getAirportsByCityNameStartingWith(String name);
+
+    List<AirportDTO> getAirportsByNameStartingWith(String name);
+
+    List<AirportDTO> getAirportsByCityNameAndNameStartingWith(String cityName, String name);
+
+    List<AirportDTO> getAirportsByNameOrCityNameOrCodeOrCityCodeStartingWith(String cityName, String airportName, String airportCode, String cityCode);
+
+    List<AirportDTO> getAirportsByCityNameOrCode(String cityName, String airportCode);
 }

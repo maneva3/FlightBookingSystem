@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -84,5 +83,42 @@ public class FlightServiceImpl implements FlightService {
         }
         //return flightDuration;
         return flightDuration.toHours() + " hours and " + flightDuration.toMinutesPart() + " minutes";
+    }
+
+    @Override
+    public List<FlightDTO> getFlightsByDepartureAirportName(String name) {
+        return flightRepository.findAllByDepartureAirportName(name).stream()
+                .map(this::convertToFlightDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FlightDTO> getFlightsByArrivalAirportName(String name) {
+        return flightRepository.findAllByArrivalAirportName(name).stream()
+                .map(this::convertToFlightDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FlightDTO> getFlightsByDepartureTime(LocalDateTime localDateTime) {
+        return flightRepository.findAllByDepartureTime(localDateTime).stream()
+                .map(this::convertToFlightDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FlightDTO> getFlightsByArrivalTime(LocalDateTime localDateTime) {
+        return flightRepository.findAllByArrivalTime(localDateTime).stream()
+                .map(this::convertToFlightDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FlightDTO> getFlightsByDepartureAirportNameAndArrivalAirportNameAndDepartureTimeBetween
+            (String departureAirportName, String arrivalAirportName, LocalDateTime startDate, LocalDateTime endDate) {
+        return flightRepository.findAllByDepartureAirportNameAndArrivalAirportNameAndDepartureTimeBetween
+                (departureAirportName, arrivalAirportName, startDate, endDate).stream()
+                .map(this::convertToFlightDTO)
+                .collect(Collectors.toList());
     }
 }

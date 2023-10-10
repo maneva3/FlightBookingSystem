@@ -1,6 +1,7 @@
 package com.flightbookingsystem.services;
 
 import com.flightbookingsystem.data.entity.Ticket;
+import com.flightbookingsystem.data.enums.FlightStatus;
 import com.flightbookingsystem.dto.CreateTicketDTO;
 import com.flightbookingsystem.dto.TicketDTO;
 import com.flightbookingsystem.dto.UpdateTicketDTO;
@@ -18,4 +19,18 @@ public interface TicketService {
     Ticket updateTicket(String bookingReference, @Valid UpdateTicketDTO updateTicketDTO);
 
     void deleteTicket(String bookingReference);
+
+    TicketDTO getTicketByFlightNumber(String flightNumber);
+
+    List<TicketDTO> getTicketsByFlightNumber(String flightNumber);
+
+    List<TicketDTO> getTicketsByUsername(String username);
+
+    List<TicketDTO> getTicketsByFlightNumberAndUsername(String flightNumber, String username);
+
+    List<TicketDTO> getTicketsByFlightStatus(String flightStatus);
+
+    List<TicketDTO> getTicketsByFlightStatusAndUsername(String flightStatus, String username);
+
+    List<TicketDTO> getTicketsByFlightStatusAndFlightNumber(String flightStatus, String flightNumber);
 }

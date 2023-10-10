@@ -1,5 +1,6 @@
 package com.flightbookingsystem.services;
 
+import com.flightbookingsystem.data.entity.City;
 import com.flightbookingsystem.data.entity.Country;
 import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.dto.CountryDTO;
@@ -20,6 +21,14 @@ public interface CountryService {
     Country updateCountry(@Min(1) Long id, @Valid UpdateCountryDTO updateCountryDTO);
 
     void deleteCountry(Long id);
+
+    List<CountryDTO> getCountriesByName(String name);
+
+    List<CountryDTO> getCountriesByCode(CountryCode code);
+
+    List<CountryDTO> getCountriesByCity(City cityName);
+
+    CountryDTO getCountryByCity(City cityName);
 
     List<CountryDTO> getCountriesByNameOrCode(String nameOrCode);
 }

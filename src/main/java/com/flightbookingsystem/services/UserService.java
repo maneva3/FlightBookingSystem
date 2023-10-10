@@ -17,5 +17,11 @@ public interface UserService extends UserDetailsService {
     User updateUser(String username, @Valid UpdateUserDTO userDTO);
     void deleteUser(String username);
 
+    UserDTO getUserByFirstName(String firstName);
+
+    UserDTO getUserByLastName(String lastName);
+
+    UserDTO getUserByPhoneNumber(String phoneNumber);
+
     UserDTO getUserByTicket(String bookingReference);
 }

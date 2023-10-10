@@ -2,11 +2,9 @@ package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.User;
 import com.flightbookingsystem.data.repository.UserRepository;
-import com.flightbookingsystem.dto.AirportDTO;
 import com.flightbookingsystem.dto.CreateUserDTO;
 import com.flightbookingsystem.dto.UpdateUserDTO;
 import com.flightbookingsystem.dto.UserDTO;
-import com.flightbookingsystem.exceptions.AirportNotFoundException;
 import com.flightbookingsystem.exceptions.UserNotFoundException;
 import com.flightbookingsystem.services.UserService;
 import lombok.AllArgsConstructor;
@@ -65,6 +63,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(String username) {
         userRepository.deleteById(username);
+    }
+
+    @Override
+    public List<UserDTO> getUserByFirstName(String firstName) {
+        return convertToUserDTO(userRepository.findAllByPersonalInfoFirstName(firstName))
+                .map(this::convertToUserDTO)
+                .collect(Collectors.toList());;
+    }
+
+    @Override
+    public List<UserDTO> getUserByLastName(String lastName) {
+        return convertToUserDTO(userRepository.findAllByPersonalInfoLastName(lastName))
+                .map(this::convertToUserDTO)
+                .collect(Collectors.toList());;
+    }
+
+    @Override
+    public UserDTO getUserByPhoneNumber(String phoneNumber) {
+        return convertToUserDTO(userRepository.findByPersonalInfoPhoneNumber(phoneNumber));
     }
 
     @Override

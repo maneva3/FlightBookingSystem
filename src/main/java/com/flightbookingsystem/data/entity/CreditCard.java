@@ -2,7 +2,6 @@ package com.flightbookingsystem.data.entity;
 
 import com.flightbookingsystem.data.enums.CreditCardType;
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.*;
 

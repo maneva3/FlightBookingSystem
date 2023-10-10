@@ -1,7 +1,6 @@
 package com.flightbookingsystem.data.entity;
 
 import com.flightbookingsystem.data.enums.FlightStatus;
-import com.flightbookingsystem.exceptions.InvalidDurationException;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -9,9 +8,7 @@ import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.DateTimeException;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
 

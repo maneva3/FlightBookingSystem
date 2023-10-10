@@ -14,6 +14,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -59,6 +60,36 @@ public class CreditCardServiceImpl implements CreditCardService {
     @Override
     public void deleteCreditCard(String cardNumber) {
         creditCardRepository.deleteById(cardNumber);
+    }
+
+    @Override
+    public CreditCard findByCardNumber(String cardNumber) {
+        return creditCardRepository.findByCardNumber(cardNumber);
+    }
+
+    @Override
+    public CreditCard findByCardNumberAndCvv(String cardNumber, String cvv) {
+        return creditCardRepository.findByCardNumberAndCvv(cardNumber, cvv);
+    }
+
+    @Override
+    public CreditCard findByCardNumberAndCvvAndExpiryDate(String cardNumber, String cvv, LocalDate expiryDate) {
+        return creditCardRepository.findByCardNumberAndCvvAndExpiryDate(cardNumber, cvv, expiryDate);
+    }
+
+    @Override
+    public CreditCard findByPersonalInfoFirstName(String firstName) {
+        return creditCardRepository.findByPersonalInfoFirstName(firstName);
+    }
+
+    @Override
+    public CreditCard findByPersonalInfoLastName(String lastName) {
+        return creditCardRepository.findByPersonalInfoLastName(lastName);
+    }
+
+    @Override
+    public CreditCard findByPersonalInfoFirstNameAndPersonalInfoLastName(String firstName, String lastName) {
+        return creditCardRepository.findByPersonalInfoFirstNameAndPersonalInfoLastName(firstName, lastName);
     }
 
     private CreditCardType determineCardType(String cardNumber) {
