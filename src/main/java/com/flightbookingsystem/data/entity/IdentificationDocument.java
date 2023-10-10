@@ -7,12 +7,12 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "identification_document")
@@ -53,5 +53,18 @@ public class IdentificationDocument {
     @OneToOne(mappedBy = "identificationDocument")
     @NotNull(message = "Personal info must be set!")
     private PersonalInfo personalInfo;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        IdentificationDocument that = (IdentificationDocument) o;
+        return Objects.equals(identificationNumber, that.identificationNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identificationNumber);
+    }
 }
 

@@ -9,12 +9,12 @@ import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "ticket")
@@ -70,5 +70,18 @@ public class Ticket {
             luggageTypeMultiplier = 1.5;
         }
         return BigDecimal.valueOf(flight.getStartingPrice().doubleValue()*travelClassMultiplier*luggageTypeMultiplier);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        return Objects.equals(bookingReference, ticket.bookingReference);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookingReference);
     }
 }
