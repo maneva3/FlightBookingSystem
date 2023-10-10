@@ -1,5 +1,6 @@
 package com.flightbookingsystem.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flightbookingsystem.data.enums.LuggageType;
 import com.flightbookingsystem.data.enums.TravelClass;
 import jakarta.persistence.*;
@@ -45,6 +46,7 @@ public class Ticket {
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
     @NotNull(message = "User must be set!")
+    @JsonIgnore
     private User user;
 
     @Override

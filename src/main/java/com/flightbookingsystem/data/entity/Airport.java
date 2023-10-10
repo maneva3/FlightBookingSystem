@@ -1,5 +1,6 @@
 package com.flightbookingsystem.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,9 +31,11 @@ public class Airport {
     private City city;
 
     @OneToMany(targetEntity = Flight.class, mappedBy = "arrivalAirport")
+    @JsonIgnore
     private Set<Flight> departureFlights;
 
     @OneToMany(targetEntity = Flight.class, mappedBy = "departureAirport")
+    @JsonIgnore
     private Set<Flight> arrivalFlights;
 
     @Override

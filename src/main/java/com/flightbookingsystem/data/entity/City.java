@@ -1,5 +1,6 @@
 package com.flightbookingsystem.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -32,6 +33,7 @@ public class City {
 
     @Column(name = "airports")
     @OneToMany(targetEntity = Airport.class, mappedBy = "city")
+    @JsonIgnore
     private Set<Airport> airports;
 
     @Column(name = "time_zone")

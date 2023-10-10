@@ -1,5 +1,6 @@
 package com.flightbookingsystem.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.data.enums.Gender;
 import jakarta.persistence.*;
@@ -52,6 +53,7 @@ public class IdentificationDocument {
 
     @OneToOne(mappedBy = "identificationDocument")
     @NotNull(message = "Personal info must be set!")
+    @JsonIgnore
     private PersonalInfo personalInfo;
 
     @Override

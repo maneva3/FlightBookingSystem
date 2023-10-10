@@ -1,5 +1,6 @@
 package com.flightbookingsystem.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flightbookingsystem.config.DurationConverter;
 import com.flightbookingsystem.data.enums.FlightStatus;
 import com.flightbookingsystem.exceptions.InvalidDurationException;
@@ -53,6 +54,7 @@ public class Flight {
     private LocalDateTime arrivalTime;
 
     @OneToMany(targetEntity = Ticket.class, mappedBy = "flight")
+    @JsonIgnore
     private Set<Ticket> tickets;
 
     @Column(name = "flight_status")

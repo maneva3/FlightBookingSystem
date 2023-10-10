@@ -1,5 +1,6 @@
 package com.flightbookingsystem.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flightbookingsystem.data.enums.CreditCardType;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
@@ -43,6 +44,7 @@ public class CreditCard {
 
     @OneToOne(mappedBy = "creditCard")
     @NotNull(message = "Personal info must be set!")
+    @JsonIgnore
     private PersonalInfo personalInfo;
 
     @Override

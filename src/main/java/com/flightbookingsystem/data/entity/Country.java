@@ -1,5 +1,6 @@
 package com.flightbookingsystem.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flightbookingsystem.data.enums.CountryCode;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -12,6 +13,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "country")
@@ -30,6 +32,7 @@ public class Country {
     private String name;
 
     @OneToMany(targetEntity = City.class, mappedBy = "country")
+    @JsonIgnore
     private Set<City> cities;
 
     @Override
