@@ -14,7 +14,6 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
 @Table(name = "identification_document")
 public class IdentificationDocument {
