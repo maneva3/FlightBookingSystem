@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -31,6 +32,14 @@ public class FlightApiController {
     @GetMapping("/{id}")
     public FlightDTO getFlight(@PathVariable("id") Long id){
         return flightService.getFlight(id);
+    }
+
+    @PostMapping("/flight-search")
+    public List<FlightDTO> searchFlights(@RequestBody SearchFlight searchFlight){
+        String departureAirportCode = searchFlight.getDepartureAirport().getCode();
+        String arrivalAirportCode = searchFlight.getArrivalAirport().getCode();
+        LocalDate departureTime = searchFlight.getDepartureTime();
+        return flightService.getFlightsDepartureAirportCodeAndArrivalAirportCodeAndDepartureTimeDate(departureAirportCode, arrivalAirportCode, departureTime);
     }
 
     @PostMapping

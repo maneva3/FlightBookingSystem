@@ -7,6 +7,7 @@ import com.flightbookingsystem.dto.update.UpdateFlightDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -33,4 +34,6 @@ public interface FlightService {
             (String departureAirportName, String arrivalAirportName, LocalDateTime startDate, LocalDateTime endDate);
   
     String getDurationOfFlightAsString(Flight flight);
+
+    List<FlightDTO> getFlightsDepartureAirportCodeAndArrivalAirportCodeAndDepartureTimeDate(String departureAirportCode, String ArrivalAirportCode, LocalDate date);
 }
