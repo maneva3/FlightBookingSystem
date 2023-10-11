@@ -1,6 +1,7 @@
 package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.Ticket;
+import com.flightbookingsystem.data.enums.FlightStatus;
 import com.flightbookingsystem.data.repository.TicketRepository;
 import com.flightbookingsystem.dto.create.CreateTicketDTO;
 import com.flightbookingsystem.dto.TicketDTO;
@@ -56,4 +57,56 @@ public class TicketServiceImpl implements TicketService {
     public void deleteTicket(String bookingReference) {
         ticketRepository.deleteById(bookingReference);
     }
+
+    @Override
+    public TicketDTO getTicketByFlightNumber(String flightNumber) {
+        return modelMapper.map(ticketRepository.findByFlightFlightNumber(flightNumber)
+                .orElseThrow(() -> new TicketNotFoundException("Ticket with flightNumber " + flightNumber + " not found")), TicketDTO.class);
+    }
+
+    @Override
+    public List<TicketDTO> getTicketsByFlightNumber(String flightNumber) {
+        return ticketRepository.findAllByFlightFlightNumber(flightNumber).stream()
+                .map(this::convertToTicketDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<TicketDTO> getTicketsByUsername(String username) {
+        return ticketRepository.findAllByUserUsername(username).stream()
+                .map(this::convertToTicketDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<TicketDTO> getTicketsByFlightNumberAndUsername(String flightNumber, String username) {
+        return ticketRepository.findAllByUserUsernameAndFlightFlightNumber(username, flightNumber).stream()
+                .map(this::convertToTicketDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<TicketDTO> getTicketsByFlightStatus(String flightStatus) {
+        FlightStatus status = FlightStatus.valueOf(flightStatus);
+        return ticketRepository.findAllByFlightFlightStatus(status).stream()
+                .map(this::convertToTicketDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<TicketDTO> getTicketsByFlightStatusAndUsername(String flightStatus, String username) {
+        FlightStatus status = FlightStatus.valueOf(flightStatus);
+        return ticketRepository.findAllByFlightFlightStatusAndUserUsername(status, username).stream()
+                .map(this::convertToTicketDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<TicketDTO> getTicketsByFlightStatusAndFlightNumber(String flightStatus, String flightNumber) {
+        FlightStatus status = FlightStatus.valueOf(flightStatus);
+        return ticketRepository.findAllByFlightFlightStatusAndFlightFlightNumber(status, flightNumber).stream()
+                .map(this::convertToTicketDTO)
+                .collect(Collectors.toList());
+    }
+
 }

@@ -57,4 +57,35 @@ public class PersonalInfoServiceImpl implements PersonalInfoService {
     public void deletePersonalInfo(Long id) {
         personalInfoRepository.deleteById(id);
     }
+
+    @Override
+    public PersonalInfoDTO getPersonalInfoByPhoneNumber(String phoneNumber) {
+        return modelMapper.map(personalInfoRepository.findByPhoneNumber(phoneNumber), PersonalInfoDTO.class);
+    }
+
+    @Override
+    public PersonalInfoDTO getPersonalInfoByUserUsername(String username) {
+        return modelMapper.map(personalInfoRepository.findByUserUsername(username), PersonalInfoDTO.class);
+    }
+
+    @Override
+    public List<PersonalInfoDTO> getAllPersonalInfoByFirstName(String firstName) {
+        return personalInfoRepository.findAllByFirstName(firstName).stream()
+                .map(this::convertToPersonalInfoDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PersonalInfoDTO> getAllPersonalInfoByLastName(String lastName) {
+        return personalInfoRepository.findByLastName(lastName).stream()
+                .map(this::convertToPersonalInfoDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PersonalInfoDTO> getAllPersonalInfoByFirstNameAndLastName(String firstName, String lastName) {
+        return personalInfoRepository.findByFirstNameAndLastName(firstName, lastName).stream()
+                .map(this::convertToPersonalInfoDTO)
+                .collect(Collectors.toList());
+    }
 }

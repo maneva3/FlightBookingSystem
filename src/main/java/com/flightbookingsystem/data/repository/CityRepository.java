@@ -14,7 +14,6 @@ public interface CityRepository extends JpaRepository<City, String> {
     List<City> findAllByNameStartingWith(String cityName);
     List<City> findAllByCodeStartingWith(String cityCode);
     List<City> findAllByNameOrCodeStartingWith(String cityName, String cityCode, Sort sort);
-    List<City> findCityByCountryName(String countryName);
     List<City> findAllByCountryName(String countryName);
     List<City> findAllByCountryCode(CountryCode countryCode);
     List<City> findAllByTimeZone(TimeZone timeZone);

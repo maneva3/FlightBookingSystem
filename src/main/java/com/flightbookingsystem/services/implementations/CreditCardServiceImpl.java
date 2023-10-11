@@ -14,6 +14,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -59,6 +60,36 @@ public class CreditCardServiceImpl implements CreditCardService {
     @Override
     public void deleteCreditCard(String cardNumber) {
         creditCardRepository.deleteById(cardNumber);
+    }
+
+    @Override
+    public CreditCardDTO getCreditCardByCardNumber(String cardNumber) {
+       return convertToCreditCardDTO(creditCardRepository.findByCardNumber(cardNumber));
+    }
+
+    @Override
+    public CreditCardDTO getCreditCardByCardNumberAndCvv(String cardNumber, String cvv) {
+        return convertToCreditCardDTO(creditCardRepository.findByCardNumberAndCvv(cardNumber, cvv));
+    }
+
+    @Override
+    public CreditCardDTO getCreditCardByCardNumberAndCvvAndExpiryDate(String cardNumber, String cvv, LocalDate expiryDate) {
+        return convertToCreditCardDTO(creditCardRepository.findByCardNumberAndCvvAndExpiryDate(cardNumber, cvv, expiryDate));
+    }
+
+    @Override
+    public CreditCardDTO getCreditCardByPersonalInfoFirstName(String firstName) {
+        return convertToCreditCardDTO(creditCardRepository.findByPersonalInfoFirstName(firstName));
+    }
+
+    @Override
+    public CreditCardDTO getCreditCardByPersonalInfoLastName(String lastName) {
+        return convertToCreditCardDTO(creditCardRepository.findByPersonalInfoLastName(lastName));
+    }
+
+    @Override
+    public CreditCardDTO getCreditCardByPersonalInfoFirstNameAndPersonalInfoLastName(String firstName, String lastName) {
+       return convertToCreditCardDTO(creditCardRepository.findByPersonalInfoFirstNameAndPersonalInfoLastName(firstName, lastName));
     }
 
     private CreditCardType determineCardType(String cardNumber) {

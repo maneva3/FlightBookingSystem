@@ -10,6 +10,7 @@ import com.flightbookingsystem.services.AirportService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -67,6 +68,50 @@ public class AirportServiceImpl implements AirportService {
     @Override
     public List<AirportDTO> getAirportsByName(String name) {
         return airportRepository.findAllByName(name).stream()
+                .map(this::convertToAirportDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AirportDTO> getAirportsByCityName(String name) {
+        return airportRepository.findAllByCityName(name).stream()
+                .map(this::convertToAirportDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AirportDTO> getAirportsByCityNameStartingWith(String name) {
+        return airportRepository.findAllByCityNameStartingWith(name, Sort.by(Sort.Direction.ASC, "name")).stream()
+                .map(this::convertToAirportDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AirportDTO> getAirportsByNameStartingWith(String name) {
+        return airportRepository.findAllByNameStartingWith(name, Sort.by("name")).stream()
+                .map(this::convertToAirportDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AirportDTO> getAirportsByCityNameAndNameStartingWith(String cityName, String name) {
+        Sort sort = Sort.by(Sort.Order.asc("cityName"), Sort.Order.asc("name"));
+        return airportRepository.findAllByCityNameAndNameStartingWith(cityName, name, sort).stream()
+                .map(this::convertToAirportDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AirportDTO> getAirportsByNameOrCityNameOrCodeOrCityCodeStartingWith(String cityName, String airportName, String airportCode, String cityCode) {
+        Sort sort = Sort.by(Sort.Order.asc("cityName"), Sort.Order.asc("airportName"), Sort.Order.asc("airportCode"), Sort.Order.asc("cityCode"));
+        return airportRepository.findAllByNameOrCityNameOrCodeOrCityCodeStartingWith(cityName, airportName, airportCode, cityCode, sort).stream()
+                .map(this::convertToAirportDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AirportDTO> getAirportsByCityNameOrCode(String cityName, String airportCode) {
+        return airportRepository.findAllByNameContainingIgnoreCaseOrCodeContainingIgnoreCaseOrderByNameAsc(cityName, airportCode).stream()
                 .map(this::convertToAirportDTO)
                 .collect(Collectors.toList());
     }

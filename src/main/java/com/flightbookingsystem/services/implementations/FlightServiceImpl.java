@@ -92,4 +92,41 @@ public class FlightServiceImpl implements FlightService {
         }
         flight.setDuration(flightDuration);
     }
+
+    @Override
+    public List<FlightDTO> getFlightsByDepartureAirportName(String name) {
+        return flightRepository.findAllByDepartureAirportName(name).stream()
+                .map(this::convertToFlightDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FlightDTO> getFlightsByArrivalAirportName(String name) {
+        return flightRepository.findAllByArrivalAirportName(name).stream()
+                .map(this::convertToFlightDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FlightDTO> getFlightsByDepartureTime(LocalDateTime localDateTime) {
+        return flightRepository.findAllByDepartureTime(localDateTime).stream()
+                .map(this::convertToFlightDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FlightDTO> getFlightsByArrivalTime(LocalDateTime localDateTime) {
+        return flightRepository.findAllByArrivalTime(localDateTime).stream()
+                .map(this::convertToFlightDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FlightDTO> getFlightsByDepartureAirportNameAndArrivalAirportNameAndDepartureTimeBetween
+            (String departureAirportName, String arrivalAirportName, LocalDateTime startDate, LocalDateTime endDate) {
+        return flightRepository.findAllByDepartureAirportNameAndArrivalAirportNameAndDepartureTimeBetween
+                (departureAirportName, arrivalAirportName, startDate, endDate).stream()
+                .map(this::convertToFlightDTO)
+                .collect(Collectors.toList());
+    }
 }

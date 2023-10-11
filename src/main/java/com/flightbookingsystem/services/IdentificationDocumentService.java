@@ -17,4 +17,12 @@ public interface IdentificationDocumentService {
     IdentificationDocument updateIdentificationDocument(String identificationNumber, @Valid UpdateIdentificationDocumentDTO updateIdentificationDocumentDTO);
 
     void deleteIdentificationDocument(String identificationNumber);
+
+    IdentificationDocumentDTO getIdentificationDocumentByFirstNameAndLastName(String firstName, String lastName);
+
+    IdentificationDocumentDTO getIdentificationDocumentByPersonalInfoFirstName(String firstName);
+
+    IdentificationDocumentDTO getIdentificationDocumentByPersonalInfoPhoneNumber(String phoneNumber);
+
+    IdentificationDocumentDTO getIdentificationDocumentByPersonalInfoUserUsername(String username);
 }

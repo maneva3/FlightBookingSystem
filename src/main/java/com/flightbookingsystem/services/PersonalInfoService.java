@@ -19,4 +19,14 @@ public interface PersonalInfoService {
     PersonalInfo updatePersonalInfo(@Min(1) Long id, @Valid UpdatePersonalInfoDTO updatePersonalInfoDTO);
 
     void deletePersonalInfo(Long id);
+
+    PersonalInfoDTO getPersonalInfoByPhoneNumber(String phoneNumber);
+
+    PersonalInfoDTO getPersonalInfoByUserUsername(String username);
+
+    List<PersonalInfoDTO> getAllPersonalInfoByFirstName(String firstName);
+
+    List<PersonalInfoDTO> getAllPersonalInfoByLastName(String lastName);
+
+    List<PersonalInfoDTO> getAllPersonalInfoByFirstNameAndLastName(String firstName, String lastName);
 }

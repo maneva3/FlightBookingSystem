@@ -1,6 +1,8 @@
 package com.flightbookingsystem.services.implementations;
 
+import com.flightbookingsystem.data.entity.City;
 import com.flightbookingsystem.data.entity.Country;
+import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.data.repository.CountryRepository;
 import com.flightbookingsystem.dto.CountryDTO;
 import com.flightbookingsystem.dto.create.CreateCountryDTO;
@@ -58,6 +60,32 @@ public class CountryServiceImpl implements CountryService {
         countryRepository.deleteById(id);
     }
 
+
+    @Override
+    public List<CountryDTO> getCountriesByName(String name) {
+        return countryRepository.findAllByName(name).stream()
+                .map(this::convertToCountryDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CountryDTO> getCountriesByCode(CountryCode code) {
+        return countryRepository.findAllByCode(code).stream()
+                .map(this::convertToCountryDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public CountryDTO getCountryByCity(City cityName) {
+        return modelMapper.map(countryRepository.findCountryByCitiesContains(cityName), CountryDTO.class);
+    }
+
+    @Override
+    public List<CountryDTO> getCountriesByCity(City cityName) {
+        return countryRepository.findAllByCitiesContains(cityName).stream()
+                .map(this::convertToCountryDTO)
+                .collect(Collectors.toList());
+    }
 
     @Override
     public List<CountryDTO> getCountriesByNameOrCode(String nameOrCode) {

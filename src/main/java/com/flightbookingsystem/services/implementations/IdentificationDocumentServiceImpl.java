@@ -56,4 +56,24 @@ public class IdentificationDocumentServiceImpl implements IdentificationDocument
     public void deleteIdentificationDocument(String identificationNumber) {
         identificationDocumentRepository.deleteById(identificationNumber);
     }
+
+    @Override
+    public IdentificationDocumentDTO getIdentificationDocumentByFirstNameAndLastName(String firstName, String lastName) {
+        return modelMapper.map(identificationDocumentRepository.findByFirstNameAndLastName(firstName, lastName), IdentificationDocumentDTO.class);
+    }
+
+    @Override
+    public IdentificationDocumentDTO getIdentificationDocumentByPersonalInfoFirstName(String firstName) {
+        return modelMapper.map(identificationDocumentRepository.findByPersonalInfoFirstName(firstName), IdentificationDocumentDTO.class);
+    }
+
+    @Override
+    public IdentificationDocumentDTO getIdentificationDocumentByPersonalInfoPhoneNumber(String phoneNumber) {
+        return modelMapper.map(identificationDocumentRepository.findByPersonalInfoPhoneNumber(phoneNumber), IdentificationDocumentDTO.class);
+    }
+
+    @Override
+    public IdentificationDocumentDTO getIdentificationDocumentByPersonalInfoUserUsername(String username) {
+        return modelMapper.map(identificationDocumentRepository.findByPersonalInfoUserUsername(username), IdentificationDocumentDTO.class);
+    }
 }

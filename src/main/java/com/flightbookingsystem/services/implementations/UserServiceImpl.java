@@ -2,6 +2,8 @@ package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.User;
 import com.flightbookingsystem.data.repository.UserRepository;
+import com.flightbookingsystem.dto.CreateUserDTO;
+import com.flightbookingsystem.dto.UpdateUserDTO;
 import com.flightbookingsystem.dto.create.CreateUserDTO;
 import com.flightbookingsystem.dto.update.UpdateUserDTO;
 import com.flightbookingsystem.dto.UserDTO;
@@ -41,11 +43,11 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
-//    @Override
-//    public UserDTO getUser(String username) {
-//        return modelMapper.map(userRepository.findById(username)
-//                .orElseThrow(() -> new UserNotFoundException("User with username " + username + " not found")), UserDTO.class);
-//    }
+    @Override
+    public UserDTO getUser(String username) {
+        return modelMapper.map(userRepository.findById(username)
+                .orElseThrow(() -> new UserNotFoundException("User with username " + username + " not found")), UserDTO.class);
+    }
 
     @Override
     public User create(CreateUserDTO createUserDTO) {
@@ -63,6 +65,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(String username) {
         userRepository.deleteById(username);
+    }
+
+    @Override
+    public List<UserDTO> getUserByFirstName(String firstName) {
+        return userRepository.findAllByPersonalInfoFirstName(firstName).stream().map(this::convertToUserDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UserDTO> getUserByLastName(String lastName) {
+        return userRepository.findAllByPersonalInfoLastName(lastName).stream().map(this::convertToUserDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public UserDTO getUserByPhoneNumber(String phoneNumber) {
+        return convertToUserDTO(userRepository.findByPersonalInfoPhoneNumber(phoneNumber));
     }
 
     @Override
