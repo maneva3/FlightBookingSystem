@@ -1,5 +1,6 @@
 package com.flightbookingsystem.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flightbookingsystem.data.enums.LuggageType;
 import com.flightbookingsystem.data.enums.TravelClass;
 import jakarta.persistence.*;
@@ -9,13 +10,12 @@ import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
 @Entity
 @Table(name = "ticket")
 public class Ticket {
@@ -24,7 +24,7 @@ public class Ticket {
     private String bookingReference;
 
     @ManyToOne(targetEntity = Flight.class)
-    @JoinColumn(name = "ticket_id")
+    @JoinColumn(name = "flight_id")
     @NotNull(message = "Flight must be set!")
     private Flight flight;
 
@@ -45,30 +45,19 @@ public class Ticket {
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
     @NotNull(message = "User must be set!")
+    @JsonIgnore
     private User user;
 
-    public static BigDecimal getFinalPrice(Flight flight, TravelClass travelClass, LuggageType luggageType){
-        double travelClassMultiplier;
-        if (travelClass == TravelClass.ECONOMY){
-            travelClassMultiplier = 1;
-        }
-        else if(travelClass == TravelClass.BUSINESS){
-            travelClassMultiplier = 1.3;
-        }
-        else {
-            travelClassMultiplier = 2;
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        return Objects.equals(bookingReference, ticket.bookingReference);
+    }
 
-        double luggageTypeMultiplier;
-        if (luggageType == LuggageType.FREE){
-            luggageTypeMultiplier = 1;
-        }
-        else if(luggageType == LuggageType.CABIN){
-            luggageTypeMultiplier = 1.2;
-        }
-        else {
-            luggageTypeMultiplier = 1.5;
-        }
-        return BigDecimal.valueOf(flight.getStartingPrice().doubleValue()*travelClassMultiplier*luggageTypeMultiplier);
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookingReference);
     }
 }

@@ -11,6 +11,7 @@ public interface CreditCardRepository extends JpaRepository<CreditCard, String> 
     CreditCard findByCardNumberAndCvvAndExpiryDate(String creditCardNumber, String cvv, LocalDate expiryDate);
     CreditCard findByPersonalInfoFirstName(String firstName);
     CreditCard findByPersonalInfoLastName(String lastName);
+    CreditCard findByPersonalInfoUserUsername(String username);
     CreditCard findByPersonalInfoFirstNameAndPersonalInfoLastName(String firstName, String lastName);
 
 }

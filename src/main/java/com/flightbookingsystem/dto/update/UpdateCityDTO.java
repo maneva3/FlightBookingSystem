@@ -1,6 +1,5 @@
-package com.flightbookingsystem.dto;
+package com.flightbookingsystem.dto.update;
 
-import com.flightbookingsystem.data.enums.CountryCode;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -8,14 +7,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.TimeZone;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-public class CreateCountryDTO {
-    @NotNull(message = "Country code must be set!")
-    private CountryCode code;
+public class UpdateCityDTO {
+    @NotBlank(message = "City code cannot be blank!")
+    private String code;
 
-    @NotBlank(message = "Country name cannot be blank!")
+    @NotBlank(message = "City name cannot be blank!")
     private String name;
 }

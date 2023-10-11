@@ -34,5 +34,6 @@ public class CreditCardViewModel {
     private String cvv;
 
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "Card type is required")
     private CreditCardType cardType;
 }

@@ -1,16 +1,15 @@
 package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.CreditCard;
-import com.flightbookingsystem.dto.CreateCreditCardDTO;
+import com.flightbookingsystem.dto.create.CreateCreditCardDTO;
 import com.flightbookingsystem.dto.CreditCardDTO;
-import com.flightbookingsystem.dto.UpdateCreditCardDTO;
+import com.flightbookingsystem.dto.update.UpdateCreditCardDTO;
 import com.flightbookingsystem.services.CreditCardService;
 import com.flightbookingsystem.web.view.model.CreateCreditCardViewModel;
 import com.flightbookingsystem.web.view.model.CreditCardViewModel;
 import com.flightbookingsystem.web.view.model.UpdateCreditCardViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

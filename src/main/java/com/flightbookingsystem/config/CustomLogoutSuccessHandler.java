@@ -10,6 +10,6 @@ import java.io.IOException;
 public class CustomLogoutSuccessHandler implements org.springframework.security.web.authentication.logout.LogoutSuccessHandler {
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        response.sendRedirect("/signIn");
+        response.sendRedirect("/login");
     }
 }

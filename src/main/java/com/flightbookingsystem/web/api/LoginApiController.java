@@ -1,35 +1,71 @@
 package com.flightbookingsystem.web.api;
 
+import com.flightbookingsystem.config.JwtAuthenticationResponse;
+import com.flightbookingsystem.config.JwtTokenProvider;
+import com.flightbookingsystem.config.LoginRequest;
 import com.flightbookingsystem.data.entity.User;
 import lombok.AllArgsConstructor;
+import org.apache.coyote.Response;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/login")
+@RequestMapping
 public class LoginApiController {
-    @RequestMapping
-    public String getLogin() {
-//        Authentication authentication2 = SecurityContextHolder.getContext().getAuthentication();
-//        model.addAttribute("username", authentication.getName());
-//
-//        User principal = (User) authentication.getPrincipal();
-//        model.addAttribute("username", principal.getAuthorities());
-        return "login";
+
+    @GetMapping("/login")
+    public ResponseEntity<?> getLoginPage() {
+        return ResponseEntity.ok("Success");
+    }
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
+
+    @PostMapping("/login")
+    public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+        // Create an authentication token with the provided username and password
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
+        );
+
+        // Set the authentication in the security context
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        // Generate an authentication token (e.g., JWT)
+        String token = jwtTokenProvider.generateToken(authentication);
+
+        // Return the token as a response
+        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
     }
 
     @GetMapping("/logout")
-    public String logout(){
-        return "login";
+    public ResponseEntity<?> logout(){
+        return ResponseEntity.ok("Success");
     }
 
     @GetMapping("/unauthorized")
-    public String unauthorized(){
-        return "unauthorized";
+    public ResponseEntity<?> unauthorized(){
+        return ResponseEntity.status(401).body("Unauthorized");
     }
 }

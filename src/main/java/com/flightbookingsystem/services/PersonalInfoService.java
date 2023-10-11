@@ -1,9 +1,9 @@
 package com.flightbookingsystem.services;
 
 import com.flightbookingsystem.data.entity.PersonalInfo;
-import com.flightbookingsystem.dto.CreatePersonalInfoDTO;
+import com.flightbookingsystem.dto.create.CreatePersonalInfoDTO;
 import com.flightbookingsystem.dto.PersonalInfoDTO;
-import com.flightbookingsystem.dto.UpdatePersonalInfoDTO;
+import com.flightbookingsystem.dto.update.UpdatePersonalInfoDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 

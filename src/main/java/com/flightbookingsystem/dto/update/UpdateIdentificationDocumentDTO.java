@@ -1,9 +1,9 @@
-package com.flightbookingsystem.dto;
+package com.flightbookingsystem.dto.update;
 
+import com.flightbookingsystem.data.entity.PersonalInfo;
 import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.data.enums.Gender;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @ToString
-public class CreateIdentificationDocumentDTO {
+public class UpdateIdentificationDocumentDTO {
     @Pattern(regexp = "[a-zA-Z0-9]{13}", message = "Identification number must be 13 symbols")
     private String identificationNumber;
 

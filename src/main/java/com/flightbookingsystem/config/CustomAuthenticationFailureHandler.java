@@ -10,6 +10,6 @@ import java.io.IOException;
 public class CustomAuthenticationFailureHandler implements org.springframework.security.web.authentication.AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        response.sendRedirect("/signIn?error");
+        response.sendRedirect("/login?error");
     }
 }

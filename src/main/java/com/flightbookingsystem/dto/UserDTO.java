@@ -4,10 +4,7 @@ import com.flightbookingsystem.data.entity.PersonalInfo;
 import com.flightbookingsystem.data.entity.Role;
 import com.flightbookingsystem.data.entity.Ticket;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,14 +21,10 @@ public class UserDTO {
     @Email(regexp = ".+[@].+[\\.].+", message = "Invalid email format!")
     private String username;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "personal_info_id", referencedColumnName = "id")
+    @NotNull(message = "Personal info cannot be null!")
     private PersonalInfo personalInfo;
 
-    @Column(name = "tickets")
-    @OneToMany(targetEntity = Ticket.class, mappedBy = "user")
     private Set<Ticket> tickets;
 
-    @ManyToMany(targetEntity = Role.class)
     private Set<Role> authorities;
 }
