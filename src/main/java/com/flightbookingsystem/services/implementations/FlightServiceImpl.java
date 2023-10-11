@@ -2,12 +2,11 @@ package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.City;
 import com.flightbookingsystem.data.entity.Flight;
-import com.flightbookingsystem.data.enums.LuggageType;
-import com.flightbookingsystem.data.enums.TravelClass;
+import com.flightbookingsystem.data.enums.FlightStatus;
 import com.flightbookingsystem.data.repository.FlightRepository;
-import com.flightbookingsystem.dto.CreateFlightDTO;
+import com.flightbookingsystem.dto.create.CreateFlightDTO;
 import com.flightbookingsystem.dto.FlightDTO;
-import com.flightbookingsystem.dto.UpdateFlightDTO;
+import com.flightbookingsystem.dto.update.UpdateFlightDTO;
 import com.flightbookingsystem.exceptions.FlightNotFoundException;
 import com.flightbookingsystem.exceptions.InvalidDurationException;
 import com.flightbookingsystem.services.FlightService;
@@ -17,11 +16,8 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PutMapping;
 
-import java.math.BigDecimal;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,6 +49,7 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public Flight create(@Valid CreateFlightDTO createFlightDTO) {
         Flight createFlight = modelMapper.map(createFlightDTO, Flight.class);
+        createFlight.setFlightStatus(FlightStatus.SCHEDULED);
         setDuration(createFlight);
         return flightRepository.save(createFlight);
     }
