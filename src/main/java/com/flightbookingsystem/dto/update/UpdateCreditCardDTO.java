@@ -1,4 +1,4 @@
-package com.flightbookingsystem.dto;
+package com.flightbookingsystem.dto.update;
 
 import com.flightbookingsystem.data.enums.CreditCardType;
 import jakarta.persistence.EnumType;
@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @ToString
-public class CreateCreditCardDTO {
+public class UpdateCreditCardDTO {
     @Pattern(regexp = "[3-5][0-9]{7,18}", message = "Card number must be 8-16 digits")
     private String cardNumber;
 
@@ -34,5 +34,6 @@ public class CreateCreditCardDTO {
     private String cvv;
 
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "Card type is required")
     private CreditCardType cardType;
 }

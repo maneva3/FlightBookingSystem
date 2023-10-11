@@ -2,10 +2,9 @@ package com.flightbookingsystem.services;
 
 import com.flightbookingsystem.data.entity.City;
 import com.flightbookingsystem.data.entity.Country;
-import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.dto.CountryDTO;
-import com.flightbookingsystem.dto.CreateCountryDTO;
-import com.flightbookingsystem.dto.UpdateCountryDTO;
+import com.flightbookingsystem.dto.create.CreateCountryDTO;
+import com.flightbookingsystem.dto.update.UpdateCountryDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 

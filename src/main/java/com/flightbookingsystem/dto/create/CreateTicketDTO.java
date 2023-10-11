@@ -1,4 +1,4 @@
-package com.flightbookingsystem.dto;
+package com.flightbookingsystem.dto.create;
 
 import com.flightbookingsystem.data.entity.Flight;
 import com.flightbookingsystem.data.entity.User;
@@ -29,9 +29,6 @@ public class CreateTicketDTO{
 
     @Pattern(regexp = "([1-9]|[1-3][0-9])[A-F]", message = "Seat must be in format: XX[A-F] or X[A-F]")
     private String seat;
-
-    @Positive(message = "Price must be positive!")
-    private BigDecimal startingPrice;
 
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Choose travel class!")

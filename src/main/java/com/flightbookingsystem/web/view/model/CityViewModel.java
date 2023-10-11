@@ -28,5 +28,8 @@ public class CityViewModel {
     @NotNull(message = "Country must be set!")
     private Country country;
 
+    @NotNull(message = "Time zone must be set!")
+    private TimeZone timeZone;
+
     private Set<Airport> airports;
 }

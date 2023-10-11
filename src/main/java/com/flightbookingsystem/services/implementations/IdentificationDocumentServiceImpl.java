@@ -2,9 +2,9 @@ package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.IdentificationDocument;
 import com.flightbookingsystem.data.repository.IdentificationDocumentRepository;
-import com.flightbookingsystem.dto.CreateIdentificationDocumentDTO;
+import com.flightbookingsystem.dto.create.CreateIdentificationDocumentDTO;
 import com.flightbookingsystem.dto.IdentificationDocumentDTO;
-import com.flightbookingsystem.dto.UpdateIdentificationDocumentDTO;
+import com.flightbookingsystem.dto.update.UpdateIdentificationDocumentDTO;
 import com.flightbookingsystem.exceptions.IdentificationDocumentNotFoundException;
 import com.flightbookingsystem.services.IdentificationDocumentService;
 import jakarta.validation.Valid;

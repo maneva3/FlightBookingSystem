@@ -1,9 +1,9 @@
 package com.flightbookingsystem.services;
 
 import com.flightbookingsystem.data.entity.Flight;
-import com.flightbookingsystem.dto.CreateFlightDTO;
+import com.flightbookingsystem.dto.create.CreateFlightDTO;
 import com.flightbookingsystem.dto.FlightDTO;
-import com.flightbookingsystem.dto.UpdateFlightDTO;
+import com.flightbookingsystem.dto.update.UpdateFlightDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 
@@ -21,8 +21,6 @@ public interface FlightService {
 
     void deleteFlight(Long id);
 
-    String getDurationOfFlightAsString(@Min(1) Long id);
-
     List<FlightDTO> getFlightsByDepartureAirportName(String name);
 
     List<FlightDTO> getFlightsByArrivalAirportName(String name);
@@ -33,4 +31,6 @@ public interface FlightService {
 
     List<FlightDTO> getFlightsByDepartureAirportNameAndArrivalAirportNameAndDepartureTimeBetween
             (String departureAirportName, String arrivalAirportName, LocalDateTime startDate, LocalDateTime endDate);
+  
+    String getDurationOfFlightAsString(Flight flight);
 }

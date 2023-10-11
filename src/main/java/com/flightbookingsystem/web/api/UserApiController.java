@@ -3,10 +3,10 @@ package com.flightbookingsystem.web.api;
 import com.flightbookingsystem.data.entity.PersonalInfo;
 import com.flightbookingsystem.data.entity.Role;
 import com.flightbookingsystem.data.entity.User;
-import com.flightbookingsystem.dto.CreatePersonalInfoDTO;
+import com.flightbookingsystem.dto.create.CreatePersonalInfoDTO;
 import com.flightbookingsystem.dto.UserDTO;
-import com.flightbookingsystem.dto.CreateUserDTO;
-import com.flightbookingsystem.dto.UpdateUserDTO;
+import com.flightbookingsystem.dto.create.CreateUserDTO;
+import com.flightbookingsystem.dto.update.UpdateUserDTO;
 import com.flightbookingsystem.services.PersonalInfoService;
 import com.flightbookingsystem.services.UserService;
 import com.flightbookingsystem.web.view.model.UserViewModel;
@@ -31,10 +31,16 @@ public class UserApiController {
     private UserViewModel convertToUserViewModel(UserDTO userDTO) {
         return modelMapper.map(userDTO, UserViewModel.class);
     }
-    @RequestMapping("/{username}")
-    public UserDTO getUser(@PathVariable("username") String username){
-        return userService.getUser(username);
+
+    @GetMapping
+    public List<UserDTO> getUsers() {
+        return userService.getUsers();
     }
+
+//    @RequestMapping("/{username}")
+//    public UserDTO getUser(@PathVariable("username") String username){
+//        return userService.getUser(username);
+//    }
 
     @PostMapping
     public User createUser(@RequestBody CreateUserViewModel user) {

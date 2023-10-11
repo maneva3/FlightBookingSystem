@@ -4,12 +4,15 @@ import com.flightbookingsystem.data.entity.User;
 import com.flightbookingsystem.data.repository.UserRepository;
 import com.flightbookingsystem.dto.CreateUserDTO;
 import com.flightbookingsystem.dto.UpdateUserDTO;
+import com.flightbookingsystem.dto.create.CreateUserDTO;
+import com.flightbookingsystem.dto.update.UpdateUserDTO;
 import com.flightbookingsystem.dto.UserDTO;
 import com.flightbookingsystem.exceptions.UserNotFoundException;
 import com.flightbookingsystem.services.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -28,11 +31,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException(username);
-        }
-        return user;
+        return userRepository
+                .findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User with username " + username + " not found"));
     }
 
     @Override
@@ -51,6 +52,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User create(CreateUserDTO createUserDTO) {
         return userRepository.save(modelMapper.map(createUserDTO, User.class));
+
     }
 
     @Override

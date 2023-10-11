@@ -2,8 +2,8 @@ package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.Country;
 import com.flightbookingsystem.dto.CountryDTO;
-import com.flightbookingsystem.dto.CreateCountryDTO;
-import com.flightbookingsystem.dto.UpdateCountryDTO;
+import com.flightbookingsystem.dto.create.CreateCountryDTO;
+import com.flightbookingsystem.dto.update.UpdateCountryDTO;
 import com.flightbookingsystem.services.CountryService;
 import com.flightbookingsystem.web.view.model.CountryViewModel;
 import com.flightbookingsystem.web.view.model.CreateCountryViewModel;

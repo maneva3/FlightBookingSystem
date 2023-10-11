@@ -1,9 +1,9 @@
-package com.flightbookingsystem.dto;
+package com.flightbookingsystem.dto.create;
 
-import com.flightbookingsystem.data.entity.PersonalInfo;
 import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.data.enums.Gender;
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @ToString
-public class UpdateIdentificationDocumentDTO {
+public class CreateIdentificationDocumentDTO {
     @Pattern(regexp = "[a-zA-Z0-9]{13}", message = "Identification number must be 13 symbols")
     private String identificationNumber;
 
@@ -26,15 +26,19 @@ public class UpdateIdentificationDocumentDTO {
     @NotBlank(message = "Last name is required")
     private String lastName;
 
+    @NotNull(message = "Date of birth is required")
     @Past(message = "Date of birth must be in the past")
     private LocalDate dateOfBirth;
 
-    @FutureOrPresent(message = "Expiry date must not be in the past")
+    @NotNull(message = "Expiry date is required")
+    @Future(message = "Expiry date must be in the future")
     private LocalDate expiryDate;
 
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "Country name is required")
     private CountryCode nationality;
 
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "Gender is required")
     private Gender gender;
 }
