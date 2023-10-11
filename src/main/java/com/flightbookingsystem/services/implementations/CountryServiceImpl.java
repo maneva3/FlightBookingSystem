@@ -77,9 +77,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public CountryDTO getCountryByCity(City cityName) {
-        return countryRepository.findCountryByCitiesContains(cityName)
-                .map(this::convertToCountryDTO)
-                .orElseThrow(() -> new CountryNotFoundException("Country with city " + cityName + " not found"));
+        return modelMapper.map(countryRepository.findCountryByCitiesContains(cityName), CountryDTO.class);
     }
 
     @Override

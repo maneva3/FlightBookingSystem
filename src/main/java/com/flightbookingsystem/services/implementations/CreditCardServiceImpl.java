@@ -63,33 +63,33 @@ public class CreditCardServiceImpl implements CreditCardService {
     }
 
     @Override
-    public CreditCard findByCardNumber(String cardNumber) {
-        return creditCardRepository.findByCardNumber(cardNumber);
+    public CreditCardDTO getCreditCardByCardNumber(String cardNumber) {
+       return convertToCreditCardDTO(creditCardRepository.findByCardNumber(cardNumber));
     }
 
     @Override
-    public CreditCard findByCardNumberAndCvv(String cardNumber, String cvv) {
-        return creditCardRepository.findByCardNumberAndCvv(cardNumber, cvv);
+    public CreditCardDTO getCreditCardByCardNumberAndCvv(String cardNumber, String cvv) {
+        return convertToCreditCardDTO(creditCardRepository.findByCardNumberAndCvv(cardNumber, cvv));
     }
 
     @Override
-    public CreditCard findByCardNumberAndCvvAndExpiryDate(String cardNumber, String cvv, LocalDate expiryDate) {
-        return creditCardRepository.findByCardNumberAndCvvAndExpiryDate(cardNumber, cvv, expiryDate);
+    public CreditCardDTO getCreditCardByCardNumberAndCvvAndExpiryDate(String cardNumber, String cvv, LocalDate expiryDate) {
+        return convertToCreditCardDTO(creditCardRepository.findByCardNumberAndCvvAndExpiryDate(cardNumber, cvv, expiryDate));
     }
 
     @Override
-    public CreditCard findByPersonalInfoFirstName(String firstName) {
-        return creditCardRepository.findByPersonalInfoFirstName(firstName);
+    public CreditCardDTO getCreditCardByPersonalInfoFirstName(String firstName) {
+        return convertToCreditCardDTO(creditCardRepository.findByPersonalInfoFirstName(firstName));
     }
 
     @Override
-    public CreditCard findByPersonalInfoLastName(String lastName) {
-        return creditCardRepository.findByPersonalInfoLastName(lastName);
+    public CreditCardDTO getCreditCardByPersonalInfoLastName(String lastName) {
+        return convertToCreditCardDTO(creditCardRepository.findByPersonalInfoLastName(lastName));
     }
 
     @Override
-    public CreditCard findByPersonalInfoFirstNameAndPersonalInfoLastName(String firstName, String lastName) {
-        return creditCardRepository.findByPersonalInfoFirstNameAndPersonalInfoLastName(firstName, lastName);
+    public CreditCardDTO getCreditCardByPersonalInfoFirstNameAndPersonalInfoLastName(String firstName, String lastName) {
+       return convertToCreditCardDTO(creditCardRepository.findByPersonalInfoFirstNameAndPersonalInfoLastName(firstName, lastName));
     }
 
     private CreditCardType determineCardType(String cardNumber) {

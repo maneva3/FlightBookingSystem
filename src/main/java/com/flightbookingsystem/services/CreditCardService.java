@@ -20,15 +20,15 @@ public interface CreditCardService {
 
     void deleteCreditCard(String cardNumber);
 
-    CreditCard findByCardNumber(String cardNumber);
+    CreditCardDTO getCreditCardByCardNumber(String cardNumber);
 
-    CreditCard findByCardNumberAndCvv(String cardNumber, String cvv);
+    CreditCardDTO getCreditCardByCardNumberAndCvv(String cardNumber, String cvv);
 
-    CreditCard findByCardNumberAndCvvAndExpiryDate(String cardNumber, String cvv, LocalDate expiryDate);
+    CreditCardDTO getCreditCardByCardNumberAndCvvAndExpiryDate(String cardNumber, String cvv, LocalDate expiryDate);
 
-    CreditCard findByPersonalInfoFirstName(String firstName);
+    CreditCardDTO getCreditCardByPersonalInfoFirstName(String firstName);
 
-    CreditCard findByPersonalInfoLastName(String lastName);
+    CreditCardDTO getCreditCardByPersonalInfoLastName(String lastName);
 
-    CreditCard findByPersonalInfoFirstNameAndPersonalInfoLastName(String firstName, String lastName);
+    CreditCardDTO getCreditCardByPersonalInfoFirstNameAndPersonalInfoLastName(String firstName, String lastName);
 }

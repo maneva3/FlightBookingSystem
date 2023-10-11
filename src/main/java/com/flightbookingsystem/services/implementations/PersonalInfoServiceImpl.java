@@ -59,31 +59,31 @@ public class PersonalInfoServiceImpl implements PersonalInfoService {
     }
 
     @Override
-    public PersonalInfoDTO findByPhoneNumber(String phoneNumber) {
+    public PersonalInfoDTO getPersonalInfoByPhoneNumber(String phoneNumber) {
         return modelMapper.map(personalInfoRepository.findByPhoneNumber(phoneNumber), PersonalInfoDTO.class);
     }
 
     @Override
-    public PersonalInfoDTO findByUserUsername(String username) {
+    public PersonalInfoDTO getPersonalInfoByUserUsername(String username) {
         return modelMapper.map(personalInfoRepository.findByUserUsername(username), PersonalInfoDTO.class);
     }
 
     @Override
-    public List<PersonalInfoDTO> findAllByFirstName(String firstName) {
+    public List<PersonalInfoDTO> getAllPersonalInfoByFirstName(String firstName) {
         return personalInfoRepository.findAllByFirstName(firstName).stream()
                 .map(this::convertToPersonalInfoDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<PersonalInfoDTO> findByLastName(String lastName) {
+    public List<PersonalInfoDTO> getAllPersonalInfoByLastName(String lastName) {
         return personalInfoRepository.findByLastName(lastName).stream()
                 .map(this::convertToPersonalInfoDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<PersonalInfoDTO> findByFirstNameAndLastName(String firstName, String lastName) {
+    public List<PersonalInfoDTO> getAllPersonalInfoByFirstNameAndLastName(String firstName, String lastName) {
         return personalInfoRepository.findByFirstNameAndLastName(firstName, lastName).stream()
                 .map(this::convertToPersonalInfoDTO)
                 .collect(Collectors.toList());

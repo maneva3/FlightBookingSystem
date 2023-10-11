@@ -67,16 +67,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDTO> getUserByFirstName(String firstName) {
-        return convertToUserDTO(userRepository.findAllByPersonalInfoFirstName(firstName))
-                .map(this::convertToUserDTO)
-                .collect(Collectors.toList());;
+        return userRepository.findAllByPersonalInfoFirstName(firstName).stream().map(this::convertToUserDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<UserDTO> getUserByLastName(String lastName) {
-        return convertToUserDTO(userRepository.findAllByPersonalInfoLastName(lastName))
-                .map(this::convertToUserDTO)
-                .collect(Collectors.toList());;
+        return userRepository.findAllByPersonalInfoLastName(lastName).stream().map(this::convertToUserDTO)
+                .collect(Collectors.toList());
     }
 
     @Override

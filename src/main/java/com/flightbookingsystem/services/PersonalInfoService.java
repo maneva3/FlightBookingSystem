@@ -20,13 +20,13 @@ public interface PersonalInfoService {
 
     void deletePersonalInfo(Long id);
 
-    PersonalInfoDTO findByPhoneNumber(String phoneNumber);
+    PersonalInfoDTO getPersonalInfoByPhoneNumber(String phoneNumber);
 
-    PersonalInfoDTO findByUserUsername(String username);
+    PersonalInfoDTO getPersonalInfoByUserUsername(String username);
 
-    List<PersonalInfoDTO> findAllByFirstName(String firstName);
+    List<PersonalInfoDTO> getAllPersonalInfoByFirstName(String firstName);
 
-    List<PersonalInfoDTO> findByLastName(String lastName);
+    List<PersonalInfoDTO> getAllPersonalInfoByLastName(String lastName);
 
-    List<PersonalInfoDTO> findByFirstNameAndLastName(String firstName, String lastName);
+    List<PersonalInfoDTO> getAllPersonalInfoByFirstNameAndLastName(String firstName, String lastName);
 }
