@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -72,6 +73,14 @@ public class FlightServiceImpl implements FlightService {
         return flight.getDuration().toHours() + " hours and " + flight.getDuration().toMinutesPart() + " minutes";
     }
 
+    @Override
+    public List<FlightDTO> getFlightsDepartureAirportCodeAndArrivalAirportCodeAndDepartureTimeDate(String departureAirportCode, String ArrivalAirportCode, LocalDate date) {
+        return flightRepository.findAllByDepartureAirportCodeAndArrivalAirportCodeAndDepartureTimeDate(departureAirportCode, ArrivalAirportCode, date)
+                .stream()
+                .map(this::convertToFlightDTO)
+                .collect(Collectors.toList());
+    }
+
     private void setDuration(Flight flight){
         City departureCity = flight.getDepartureAirport().getCity();
         City arrivalCity = flight.getArrivalAirport().getCity();
@@ -91,42 +100,5 @@ public class FlightServiceImpl implements FlightService {
             throw new InvalidDurationException("Flight duration cannot be negative!");
         }
         flight.setDuration(flightDuration);
-    }
-
-    @Override
-    public List<FlightDTO> getFlightsByDepartureAirportName(String name) {
-        return flightRepository.findAllByDepartureAirportName(name).stream()
-                .map(this::convertToFlightDTO)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<FlightDTO> getFlightsByArrivalAirportName(String name) {
-        return flightRepository.findAllByArrivalAirportName(name).stream()
-                .map(this::convertToFlightDTO)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<FlightDTO> getFlightsByDepartureTime(LocalDateTime localDateTime) {
-        return flightRepository.findAllByDepartureTime(localDateTime).stream()
-                .map(this::convertToFlightDTO)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<FlightDTO> getFlightsByArrivalTime(LocalDateTime localDateTime) {
-        return flightRepository.findAllByArrivalTime(localDateTime).stream()
-                .map(this::convertToFlightDTO)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<FlightDTO> getFlightsByDepartureAirportNameAndArrivalAirportNameAndDepartureTimeBetween
-            (String departureAirportName, String arrivalAirportName, LocalDateTime startDate, LocalDateTime endDate) {
-        return flightRepository.findAllByDepartureAirportNameAndArrivalAirportNameAndDepartureTimeBetween
-                (departureAirportName, arrivalAirportName, startDate, endDate).stream()
-                .map(this::convertToFlightDTO)
-                .collect(Collectors.toList());
     }
 }
