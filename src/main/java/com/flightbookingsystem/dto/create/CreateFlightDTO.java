@@ -1,12 +1,11 @@
-package com.flightbookingsystem.dto;
+package com.flightbookingsystem.dto.create;
 
 import com.flightbookingsystem.config.DurationConverter;
-import com.flightbookingsystem.data.entity.Airport;
-import com.flightbookingsystem.data.entity.Ticket;
-import com.flightbookingsystem.data.enums.FlightStatus;
-import jakarta.persistence.*;
+import jakarta.persistence.Convert;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import com.flightbookingsystem.data.entity.Airport;
+import com.flightbookingsystem.data.enums.FlightStatus;
 import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,13 +16,12 @@ import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-public class UpdateFlightDTO {
+public class CreateFlightDTO {
     @NotBlank(message = "Flight number cannot be blank!")
     private String flightNumber;
 
@@ -40,7 +38,7 @@ public class UpdateFlightDTO {
     private LocalDateTime arrivalTime;
 
     @NotNull(message = "Flight status must be set!")
-    private FlightStatus flightStatus;
+    private FlightStatus flightStatus = FlightStatus.SCHEDULED;
 
     @Positive(message = "Price must be positive!")
     @NotNull(message = "Price must be set!")

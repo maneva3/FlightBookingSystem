@@ -1,4 +1,4 @@
-package com.flightbookingsystem.dto;
+package com.flightbookingsystem.dto.update;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

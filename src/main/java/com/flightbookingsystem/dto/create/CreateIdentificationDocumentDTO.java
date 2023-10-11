@@ -1,4 +1,4 @@
-package com.flightbookingsystem.dto;
+package com.flightbookingsystem.dto.create;
 
 import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.data.enums.Gender;

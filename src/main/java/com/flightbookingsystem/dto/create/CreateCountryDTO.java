@@ -1,4 +1,4 @@
-package com.flightbookingsystem.dto;
+package com.flightbookingsystem.dto.create;
 
 import com.flightbookingsystem.data.enums.CountryCode;
 import jakarta.validation.constraints.NotBlank;
@@ -12,7 +12,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class UpdateCountryDTO {
+public class CreateCountryDTO {
     @NotNull(message = "Country code must be set!")
     private CountryCode code;
 

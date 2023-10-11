@@ -1,4 +1,4 @@
-package com.flightbookingsystem.dto;
+package com.flightbookingsystem.dto.create;
 
 import com.flightbookingsystem.data.entity.PersonalInfo;
 import com.flightbookingsystem.data.entity.Role;
