@@ -1,10 +1,10 @@
 package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.City;
-import com.flightbookingsystem.data.entity.Country;
 import com.flightbookingsystem.dto.*;
+import com.flightbookingsystem.dto.create.CreateCityDTO;
+import com.flightbookingsystem.dto.update.UpdateCityDTO;
 import com.flightbookingsystem.services.CityService;
-import com.flightbookingsystem.services.CountryService;
 import com.flightbookingsystem.web.view.model.*;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;

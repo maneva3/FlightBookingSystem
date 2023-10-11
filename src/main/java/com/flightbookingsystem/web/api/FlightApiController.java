@@ -2,6 +2,8 @@ package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.Flight;
 import com.flightbookingsystem.dto.*;
+import com.flightbookingsystem.dto.create.CreateFlightDTO;
+import com.flightbookingsystem.dto.update.UpdateFlightDTO;
 import com.flightbookingsystem.services.FlightService;
 import com.flightbookingsystem.web.view.model.*;
 import lombok.AllArgsConstructor;
