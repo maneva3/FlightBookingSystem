@@ -69,15 +69,30 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
+    public List<FlightDTO> getFlightsByDepartureAirportName(String name) {
+        return flightRepository.findAllByDepartureAirportName(name).stream()
+                .map(this::convertToFlightDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FlightDTO> getFlightsByArrivalAirportName(String name) {
+        return flightRepository.findAllByArrivalAirportName(name).stream()
+                .map(this::convertToFlightDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public String getDurationOfFlightAsString(Flight flight) {
         return flight.getDuration().toHours() + " hours and " + flight.getDuration().toMinutesPart() + " minutes";
     }
 
     @Override
-    public List<FlightDTO> getFlightsDepartureAirportCodeAndArrivalAirportCodeAndDepartureTimeDate(String departureAirportCode, String ArrivalAirportCode, LocalDate date) {
-        return flightRepository.findAllByDepartureAirportCodeAndArrivalAirportCodeAndDepartureTimeDate(departureAirportCode, ArrivalAirportCode, date)
+    public List<FlightDTO> getFlightsDepartureAirportCodeAndArrivalAirportCodeAndDepartureDate(String departureAirportCode, String ArrivalAirportCode, LocalDate date) {
+        return flightRepository.findAllByDepartureAirportCodeAndArrivalAirportCode(departureAirportCode, ArrivalAirportCode)
                 .stream()
                 .map(this::convertToFlightDTO)
+                .filter(flightDTO -> flightDTO.getDepartureTime().toLocalDate().equals(date))
                 .collect(Collectors.toList());
     }
 

@@ -25,15 +25,8 @@ public interface FlightService {
     List<FlightDTO> getFlightsByDepartureAirportName(String name);
 
     List<FlightDTO> getFlightsByArrivalAirportName(String name);
-
-    List<FlightDTO> getFlightsByDepartureTime(LocalDateTime localDateTime);
-
-    List<FlightDTO> getFlightsByArrivalTime(LocalDateTime localDateTime);
-
-    List<FlightDTO> getFlightsByDepartureAirportNameAndArrivalAirportNameAndDepartureTimeBetween
-            (String departureAirportName, String arrivalAirportName, LocalDateTime startDate, LocalDateTime endDate);
   
     String getDurationOfFlightAsString(Flight flight);
 
-    List<FlightDTO> getFlightsDepartureAirportCodeAndArrivalAirportCodeAndDepartureTimeDate(String departureAirportCode, String ArrivalAirportCode, LocalDate date);
+    List<FlightDTO> getFlightsDepartureAirportCodeAndArrivalAirportCodeAndDepartureDate(String departureAirportCode, String ArrivalAirportCode, LocalDate date);
 }

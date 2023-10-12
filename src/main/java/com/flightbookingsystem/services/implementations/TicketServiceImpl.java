@@ -60,8 +60,7 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public TicketDTO getTicketByFlightNumber(String flightNumber) {
-        return modelMapper.map(ticketRepository.findByFlightFlightNumber(flightNumber)
-                .orElseThrow(() -> new TicketNotFoundException("Ticket with flightNumber " + flightNumber + " not found")), TicketDTO.class);
+        return convertToTicketDTO(ticketRepository.findByFlightFlightNumber(flightNumber));
     }
 
     @Override
