@@ -1,20 +1,11 @@
 package com.flightbookingsystem.dto.update;
 
-import com.flightbookingsystem.data.entity.Flight;
-import com.flightbookingsystem.data.entity.User;
-import com.flightbookingsystem.data.enums.LuggageType;
-import com.flightbookingsystem.data.enums.TravelClass;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.math.BigDecimal;
 
 @Getter
 @Setter

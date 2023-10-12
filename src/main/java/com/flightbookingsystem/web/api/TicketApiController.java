@@ -1,8 +1,8 @@
 package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.Ticket;
-import com.flightbookingsystem.dto.create.CreateTicketDTO;
 import com.flightbookingsystem.dto.TicketDTO;
+import com.flightbookingsystem.dto.create.CreateTicketDTO;
 import com.flightbookingsystem.dto.update.UpdateTicketDTO;
 import com.flightbookingsystem.services.TicketService;
 import com.flightbookingsystem.web.view.model.CreateTicketViewModel;

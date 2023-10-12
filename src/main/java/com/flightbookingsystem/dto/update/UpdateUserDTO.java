@@ -1,16 +1,13 @@
 package com.flightbookingsystem.dto.update;
 
 import com.flightbookingsystem.data.entity.PersonalInfo;
-import com.flightbookingsystem.data.entity.Role;
-import com.flightbookingsystem.data.entity.Ticket;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.util.Set;
 
 @Getter
 @Setter

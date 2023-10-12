@@ -1,14 +1,17 @@
 package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.City;
-import com.flightbookingsystem.dto.*;
+import com.flightbookingsystem.dto.CityDTO;
 import com.flightbookingsystem.dto.create.CreateCityDTO;
 import com.flightbookingsystem.dto.update.UpdateCityDTO;
 import com.flightbookingsystem.services.CityService;
-import com.flightbookingsystem.web.view.model.*;
+import com.flightbookingsystem.web.view.model.CityViewModel;
+import com.flightbookingsystem.web.view.model.CreateCityViewModel;
+import com.flightbookingsystem.web.view.model.UpdateCityViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController

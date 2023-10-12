@@ -1,8 +1,8 @@
 package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.CreditCard;
-import com.flightbookingsystem.dto.create.CreateCreditCardDTO;
 import com.flightbookingsystem.dto.CreditCardDTO;
+import com.flightbookingsystem.dto.create.CreateCreditCardDTO;
 import com.flightbookingsystem.dto.update.UpdateCreditCardDTO;
 import com.flightbookingsystem.services.CreditCardService;
 import com.flightbookingsystem.web.view.model.CreateCreditCardViewModel;

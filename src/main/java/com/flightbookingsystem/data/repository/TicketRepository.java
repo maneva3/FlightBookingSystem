@@ -1,6 +1,5 @@
 package com.flightbookingsystem.data.repository;
 
-import com.flightbookingsystem.data.entity.Flight;
 import com.flightbookingsystem.data.entity.Ticket;
 import com.flightbookingsystem.data.enums.FlightStatus;
 import org.springframework.data.jpa.repository.JpaRepository;

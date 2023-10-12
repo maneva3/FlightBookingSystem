@@ -3,7 +3,6 @@ package com.flightbookingsystem.dto;
 import com.flightbookingsystem.data.entity.CreditCard;
 import com.flightbookingsystem.data.entity.IdentificationDocument;
 import com.flightbookingsystem.data.entity.User;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;

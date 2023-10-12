@@ -1,9 +1,9 @@
 package com.flightbookingsystem.dto.update;
 
-import com.flightbookingsystem.data.entity.PersonalInfo;
 import com.flightbookingsystem.data.enums.CountryCode;
 import com.flightbookingsystem.data.enums.Gender;
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

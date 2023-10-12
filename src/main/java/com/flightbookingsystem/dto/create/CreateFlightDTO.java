@@ -1,11 +1,11 @@
 package com.flightbookingsystem.dto.create;
 
 import com.flightbookingsystem.config.DurationConverter;
+import com.flightbookingsystem.data.entity.Airport;
+import com.flightbookingsystem.data.enums.FlightStatus;
 import jakarta.persistence.Convert;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import com.flightbookingsystem.data.entity.Airport;
-import com.flightbookingsystem.data.enums.FlightStatus;
 import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,6 @@ import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter

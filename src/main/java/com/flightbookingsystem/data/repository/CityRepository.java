@@ -1,6 +1,5 @@
 package com.flightbookingsystem.data.repository;
 
-import com.flightbookingsystem.data.entity.Airport;
 import com.flightbookingsystem.data.entity.City;
 import com.flightbookingsystem.data.enums.CountryCode;
 import org.springframework.data.domain.Sort;

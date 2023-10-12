@@ -2,17 +2,14 @@ package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.User;
 import com.flightbookingsystem.data.repository.UserRepository;
-import com.flightbookingsystem.dto.CreateUserDTO;
-import com.flightbookingsystem.dto.UpdateUserDTO;
+import com.flightbookingsystem.dto.UserDTO;
 import com.flightbookingsystem.dto.create.CreateUserDTO;
 import com.flightbookingsystem.dto.update.UpdateUserDTO;
-import com.flightbookingsystem.dto.UserDTO;
 import com.flightbookingsystem.exceptions.UserNotFoundException;
 import com.flightbookingsystem.services.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 

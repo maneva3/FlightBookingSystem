@@ -1,8 +1,8 @@
 package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.IdentificationDocument;
-import com.flightbookingsystem.dto.create.CreateIdentificationDocumentDTO;
 import com.flightbookingsystem.dto.IdentificationDocumentDTO;
+import com.flightbookingsystem.dto.create.CreateIdentificationDocumentDTO;
 import com.flightbookingsystem.dto.update.UpdateIdentificationDocumentDTO;
 import com.flightbookingsystem.services.IdentificationDocumentService;
 import com.flightbookingsystem.web.view.model.CreateIdentificationDocumentViewModel;

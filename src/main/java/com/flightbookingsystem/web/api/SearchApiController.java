@@ -1,8 +1,5 @@
 package com.flightbookingsystem.web.api;
 
-import com.flightbookingsystem.data.entity.Airport;
-import com.flightbookingsystem.data.entity.City;
-import com.flightbookingsystem.data.entity.Country;
 import com.flightbookingsystem.dto.CountryDTO;
 import com.flightbookingsystem.services.AirportService;
 import com.flightbookingsystem.services.CityService;

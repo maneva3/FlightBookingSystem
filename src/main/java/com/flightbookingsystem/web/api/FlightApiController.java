@@ -1,11 +1,14 @@
 package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.Flight;
-import com.flightbookingsystem.dto.*;
+import com.flightbookingsystem.dto.FlightDTO;
 import com.flightbookingsystem.dto.create.CreateFlightDTO;
 import com.flightbookingsystem.dto.update.UpdateFlightDTO;
 import com.flightbookingsystem.services.FlightService;
-import com.flightbookingsystem.web.view.model.*;
+import com.flightbookingsystem.web.view.model.CreateFlightViewModel;
+import com.flightbookingsystem.web.view.model.FlightViewModel;
+import com.flightbookingsystem.web.view.model.SearchFlight;
+import com.flightbookingsystem.web.view.model.UpdateFlightViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
