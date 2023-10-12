@@ -2,6 +2,7 @@ package com.flightbookingsystem.config;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
+
 import java.time.Duration;
 
 @Converter(autoApply = true)

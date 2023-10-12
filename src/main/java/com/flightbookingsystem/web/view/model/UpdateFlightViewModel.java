@@ -1,6 +1,5 @@
 package com.flightbookingsystem.web.view.model;
 
-import com.flightbookingsystem.data.entity.Airport;
 import com.flightbookingsystem.data.enums.FlightStatus;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -11,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter

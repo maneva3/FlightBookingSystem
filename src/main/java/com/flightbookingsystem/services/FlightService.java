@@ -1,8 +1,8 @@
 package com.flightbookingsystem.services;
 
 import com.flightbookingsystem.data.entity.Flight;
-import com.flightbookingsystem.dto.create.CreateFlightDTO;
 import com.flightbookingsystem.dto.FlightDTO;
+import com.flightbookingsystem.dto.create.CreateFlightDTO;
 import com.flightbookingsystem.dto.update.UpdateFlightDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;

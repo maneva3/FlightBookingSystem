@@ -2,8 +2,8 @@ package com.flightbookingsystem.services.implementations;
 
 import com.flightbookingsystem.data.entity.PersonalInfo;
 import com.flightbookingsystem.data.repository.PersonalInfoRepository;
-import com.flightbookingsystem.dto.create.CreatePersonalInfoDTO;
 import com.flightbookingsystem.dto.PersonalInfoDTO;
+import com.flightbookingsystem.dto.create.CreatePersonalInfoDTO;
 import com.flightbookingsystem.dto.update.UpdatePersonalInfoDTO;
 import com.flightbookingsystem.exceptions.PersonalInfoNotFoundException;
 import com.flightbookingsystem.services.PersonalInfoService;

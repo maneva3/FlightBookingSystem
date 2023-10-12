@@ -2,8 +2,6 @@ package com.flightbookingsystem.web.view.model;
 
 import com.flightbookingsystem.data.entity.Airport;
 import com.flightbookingsystem.data.entity.Country;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

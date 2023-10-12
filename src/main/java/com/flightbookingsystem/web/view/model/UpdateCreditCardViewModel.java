@@ -1,7 +1,6 @@
 package com.flightbookingsystem.web.view.model;
 
 import com.flightbookingsystem.data.enums.CreditCardType;
-import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Future;

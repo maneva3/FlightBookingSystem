@@ -2,8 +2,6 @@ package com.flightbookingsystem.dto.create;
 
 import com.flightbookingsystem.data.entity.PersonalInfo;
 import com.flightbookingsystem.data.entity.Role;
-import com.flightbookingsystem.data.entity.Ticket;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 

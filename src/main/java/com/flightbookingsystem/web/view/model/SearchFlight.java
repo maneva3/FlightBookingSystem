@@ -21,5 +21,5 @@ public class SearchFlight {
     private Airport arrivalAirport;
 
     @NotNull
-    private LocalDate departureTime;
+    private LocalDate departureDate;
 }
