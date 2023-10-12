@@ -1,12 +1,11 @@
 package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.IdentificationDocument;
-import com.flightbookingsystem.dto.create.CreateIdentificationDocumentDTO;
 import com.flightbookingsystem.dto.IdentificationDocumentDTO;
+import com.flightbookingsystem.dto.create.CreateIdentificationDocumentDTO;
 import com.flightbookingsystem.dto.update.UpdateIdentificationDocumentDTO;
 import com.flightbookingsystem.services.IdentificationDocumentService;
 import com.flightbookingsystem.web.view.model.CreateIdentificationDocumentViewModel;
-import com.flightbookingsystem.web.view.model.IdentificationDocumentViewModel;
 import com.flightbookingsystem.web.view.model.UpdateIdentificationDocumentViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -18,10 +17,6 @@ import org.springframework.web.bind.annotation.*;
 public class IdentificationDocumentApiController {
     private final IdentificationDocumentService identificationDocumentService;
     private final ModelMapper modelMapper;
-
-    private IdentificationDocumentViewModel convertToIdentificationDocumentViewModel(IdentificationDocumentDTO identificationDocumentDTO) {
-        return modelMapper.map(identificationDocumentDTO, IdentificationDocumentViewModel.class);
-    }
 
     @GetMapping("/{identificationNumber}")
     public IdentificationDocumentDTO getIdentificationDocument(@PathVariable("identificationNumber") String identificationNumber){

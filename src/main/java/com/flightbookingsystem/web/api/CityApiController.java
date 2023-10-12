@@ -1,14 +1,16 @@
 package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.City;
-import com.flightbookingsystem.dto.*;
+import com.flightbookingsystem.dto.CityDTO;
 import com.flightbookingsystem.dto.create.CreateCityDTO;
 import com.flightbookingsystem.dto.update.UpdateCityDTO;
 import com.flightbookingsystem.services.CityService;
-import com.flightbookingsystem.web.view.model.*;
+import com.flightbookingsystem.web.view.model.CreateCityViewModel;
+import com.flightbookingsystem.web.view.model.UpdateCityViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -17,10 +19,6 @@ import java.util.List;
 public class CityApiController {
     private final CityService cityService;
     private final ModelMapper modelMapper;
-
-    private CityViewModel convertToCityViewModel(CityDTO cityDTO) {
-        return modelMapper.map(cityDTO, CityViewModel.class);
-    }
 
     @GetMapping
     public List<CityDTO> getCities() {

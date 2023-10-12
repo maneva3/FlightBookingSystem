@@ -1,12 +1,11 @@
 package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.Ticket;
-import com.flightbookingsystem.dto.create.CreateTicketDTO;
 import com.flightbookingsystem.dto.TicketDTO;
+import com.flightbookingsystem.dto.create.CreateTicketDTO;
 import com.flightbookingsystem.dto.update.UpdateTicketDTO;
 import com.flightbookingsystem.services.TicketService;
 import com.flightbookingsystem.web.view.model.CreateTicketViewModel;
-import com.flightbookingsystem.web.view.model.TicketViewModel;
 import com.flightbookingsystem.web.view.model.UpdateTicketViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -20,10 +19,6 @@ import java.util.List;
 public class TicketApiController {
     private final TicketService ticketService;
     private final ModelMapper modelMapper;
-
-    private TicketViewModel convertToTicketViewModel(TicketDTO ticketDTO) {
-        return modelMapper.map(ticketDTO, TicketViewModel.class);
-    }
 
     @GetMapping
     public List<TicketDTO> getTickets() {

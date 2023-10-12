@@ -1,12 +1,11 @@
 package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.PersonalInfo;
-import com.flightbookingsystem.dto.create.CreatePersonalInfoDTO;
 import com.flightbookingsystem.dto.PersonalInfoDTO;
+import com.flightbookingsystem.dto.create.CreatePersonalInfoDTO;
 import com.flightbookingsystem.dto.update.UpdatePersonalInfoDTO;
 import com.flightbookingsystem.services.PersonalInfoService;
 import com.flightbookingsystem.web.view.model.CreatePersonalInfoViewModel;
-import com.flightbookingsystem.web.view.model.PersonalInfoViewModel;
 import com.flightbookingsystem.web.view.model.UpdatePersonalInfoViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -18,11 +17,6 @@ import org.springframework.web.bind.annotation.*;
 public class PersonalInfoApiController {
     private final PersonalInfoService personalInfoService;
     private final ModelMapper modelMapper;
-
-    private PersonalInfoViewModel convertToPersonalInfoViewModel(PersonalInfoDTO personalInfoDTO) {
-        return modelMapper.map(personalInfoDTO, PersonalInfoViewModel.class);
-    }
-
 
     @GetMapping
     public PersonalInfoDTO getPersonalInfo(@RequestParam Long id){

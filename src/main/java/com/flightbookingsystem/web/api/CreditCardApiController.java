@@ -1,12 +1,11 @@
 package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.CreditCard;
-import com.flightbookingsystem.dto.create.CreateCreditCardDTO;
 import com.flightbookingsystem.dto.CreditCardDTO;
+import com.flightbookingsystem.dto.create.CreateCreditCardDTO;
 import com.flightbookingsystem.dto.update.UpdateCreditCardDTO;
 import com.flightbookingsystem.services.CreditCardService;
 import com.flightbookingsystem.web.view.model.CreateCreditCardViewModel;
-import com.flightbookingsystem.web.view.model.CreditCardViewModel;
 import com.flightbookingsystem.web.view.model.UpdateCreditCardViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -18,11 +17,6 @@ import org.springframework.web.bind.annotation.*;
 public class CreditCardApiController {
     private final CreditCardService creditCardService;
     private final ModelMapper modelMapper;
-
-    private CreditCardViewModel convertToCreditCardViewModel(CreditCardDTO creditCardDTO) {
-        return modelMapper.map(creditCardDTO, CreditCardViewModel.class);
-    }
-
 
     @GetMapping
     public CreditCardDTO getCreditCard(@RequestParam String cardNumber){

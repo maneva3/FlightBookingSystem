@@ -5,7 +5,6 @@ import com.flightbookingsystem.dto.CountryDTO;
 import com.flightbookingsystem.dto.create.CreateCountryDTO;
 import com.flightbookingsystem.dto.update.UpdateCountryDTO;
 import com.flightbookingsystem.services.CountryService;
-import com.flightbookingsystem.web.view.model.CountryViewModel;
 import com.flightbookingsystem.web.view.model.CreateCountryViewModel;
 import com.flightbookingsystem.web.view.model.UpdateCountryViewModel;
 import lombok.AllArgsConstructor;
@@ -21,10 +20,6 @@ import java.util.List;
 public class CountryApiController {
     private final CountryService countryService;
     private final ModelMapper modelMapper;
-
-    private CountryViewModel convertToCountryViewModel(CountryDTO countryDTO) {
-        return modelMapper.map(countryDTO, CountryViewModel.class);
-    }
 
     @GetMapping
     public List<CountryDTO> getCountries() {

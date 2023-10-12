@@ -28,10 +28,6 @@ public class UserApiController {
     private final PersonalInfoService personalInfoService;
     private final ModelMapper modelMapper;
 
-    private UserViewModel convertToUserViewModel(UserDTO userDTO) {
-        return modelMapper.map(userDTO, UserViewModel.class);
-    }
-
     @GetMapping
     public List<UserDTO> getUsers() {
         return userService.getUsers();

@@ -5,7 +5,6 @@ import com.flightbookingsystem.dto.AirportDTO;
 import com.flightbookingsystem.dto.create.CreateAirportDTO;
 import com.flightbookingsystem.dto.update.UpdateAirportDTO;
 import com.flightbookingsystem.services.AirportService;
-import com.flightbookingsystem.web.view.model.AirportViewModel;
 import com.flightbookingsystem.web.view.model.CreateAirportViewModel;
 import com.flightbookingsystem.web.view.model.UpdateAirportViewModel;
 import lombok.AllArgsConstructor;
@@ -20,10 +19,6 @@ import java.util.List;
 public class AirportApiController {
     private final AirportService airportService;
     private final ModelMapper modelMapper;
-
-    private AirportViewModel convertToAirportViewModel(AirportDTO airportDTO) {
-        return modelMapper.map(airportDTO, AirportViewModel.class);
-    }
 
     @GetMapping
     public List<AirportDTO> getAirports() {

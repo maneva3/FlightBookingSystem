@@ -1,11 +1,13 @@
 package com.flightbookingsystem.web.api;
 
 import com.flightbookingsystem.data.entity.Flight;
-import com.flightbookingsystem.dto.*;
+import com.flightbookingsystem.dto.FlightDTO;
 import com.flightbookingsystem.dto.create.CreateFlightDTO;
 import com.flightbookingsystem.dto.update.UpdateFlightDTO;
 import com.flightbookingsystem.services.FlightService;
-import com.flightbookingsystem.web.view.model.*;
+import com.flightbookingsystem.web.view.model.CreateFlightViewModel;
+import com.flightbookingsystem.web.view.model.SearchFlight;
+import com.flightbookingsystem.web.view.model.UpdateFlightViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +21,6 @@ import java.util.List;
 public class FlightApiController {
     private final FlightService flightService;
     private final ModelMapper modelMapper;
-
-    private FlightViewModel convertToFlightViewModel(FlightDTO flightDTO) {
-        return modelMapper.map(flightDTO, FlightViewModel.class);
-    }
 
     @GetMapping
     public List<FlightDTO> getFlights() {
@@ -38,8 +36,9 @@ public class FlightApiController {
     public List<FlightDTO> searchFlights(@RequestBody SearchFlight searchFlight){
         String departureAirportCode = searchFlight.getDepartureAirport().getCode();
         String arrivalAirportCode = searchFlight.getArrivalAirport().getCode();
-        LocalDate departureTime = searchFlight.getDepartureTime();
-        return flightService.getFlightsDepartureAirportCodeAndArrivalAirportCodeAndDepartureTimeDate(departureAirportCode, arrivalAirportCode, departureTime);
+        LocalDate departureDate = searchFlight.getDepartureDate();
+
+        return flightService.getFlightsDepartureAirportCodeAndArrivalAirportCodeAndDepartureDate(departureAirportCode, arrivalAirportCode, departureDate);
     }
 
     @PostMapping
