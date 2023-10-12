@@ -16,8 +16,5 @@ import java.util.TimeZone;
 public interface FlightRepository extends JpaRepository<Flight, Long> {
     List<Flight> findAllByArrivalAirportName(String name);
     List<Flight> findAllByDepartureAirportName(String cityName);
-    List<Flight> findAllByArrivalTime(LocalDateTime localDate);
-    List<Flight> findAllByDepartureTime(LocalDateTime localDate);
-    List<Flight> findAllByDepartureAirportCodeAndArrivalAirportCodeAndDepartureTimeDate
-            (String departureAirportCode, String ArrivalAirportCode, LocalDate date);
+    List<Flight> findAllByDepartureAirportCodeAndArrivalAirportCode(String departureAirportCode, String ArrivalAirportCode);
 }
