@@ -21,6 +21,10 @@ public class UserDTO {
     @Email(regexp = ".+[@].+[\\.].+", message = "Invalid email format!")
     private String username;
 
+//    @Pattern(regexp = "^(?=.[a-z])(?=.[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", message = "The password must contain at least 1 uppercase letter, 1 lowercase letter and 1 digit!")
+//    @Size(min = 8, max = 64, message = "The password must contain at least 8 characters!")
+//    private String password;
+
     @NotNull(message = "Personal info cannot be null!")
     private PersonalInfo personalInfo;
 
